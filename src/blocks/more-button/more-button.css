@@ -1,0 +1,17 @@
+.more-button {
+  border-radius: 80px;
+  background-color: #ffffff;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1A1B22;
+  padding: 20px 84px;
+  border: none;
+  outline: none;
+  display: block;
+  cursor: pointer;
+}
+
+.more-button:hover {
+  background-color: #fcfcfc;
+}

@@ -1,0 +1,5 @@
+@import "./__container/header__container.css";
+
+.header {
+  border-bottom: rgba(255, 255, 255, 0.3) solid 1px;
+}

@@ -1,0 +1,11 @@
+.about__text {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #1A1B22;
+}
+
+.about__text:first-of-type {
+  margin-top: 24px;
+}

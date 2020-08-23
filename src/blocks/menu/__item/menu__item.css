@@ -1,0 +1,20 @@
+@import "./_active/menu__item_active.css";
+
+.menu__item {
+  margin-right: 34px;
+  transition: color 0.2s ease-in;
+}
+
+.menu__item:last-child {
+  margin-right: 0;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 100px;
+  padding: 12px 19px;
+  color: #ffffff;
+}
+
+.menu__item:hover {
+  color: #ffffff;
+
+}

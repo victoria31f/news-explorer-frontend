@@ -1,0 +1,8 @@
+@import "./__title/search__title.css";
+@import "./__text/search__text.css";
+@import "./__search-bar/search__search-bar.css";
+
+.search {
+  width: 608px;
+  margin: 0 auto;
+}

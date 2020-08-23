@@ -1,0 +1,12 @@
+@import "./_saved/card__bookmark_saved.css";
+
+.card__bookmark {
+  background-image: url("../../../images/bookmark/bookmark_normal.svg");
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+}
+
+.card__bookmark:hover {
+  background-image: url("../../../images/bookmark/bookmark_hover.svg");
+}

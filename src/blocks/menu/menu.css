@@ -1,0 +1,9 @@
+@import "./__item/menu__item.css";
+@import "./__icon/menu__icon.css";
+
+.menu {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  color: #B6BCBF;
+  font-weight: 500;
+}

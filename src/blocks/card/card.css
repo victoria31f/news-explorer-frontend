@@ -1,0 +1,15 @@
+@import "./__image/card__image.css";
+@import "./__content/card__content.css";
+@import "./__date/card__date.css";
+@import "./__title/card__title.css";
+@import "./__text/card__text.css";
+@import "./__source/card__source.css";
+@import "./__bookmark/card__bookmark.css";
+@import "./__btn-container/card__btn-container.css";
+@import "./__button-login/card__button-login.css";
+
+.card {
+  border-radius: 16px;
+  background-color: #ffffff;
+  position: relative;
+}

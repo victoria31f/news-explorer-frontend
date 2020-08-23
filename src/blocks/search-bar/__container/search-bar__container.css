@@ -1,0 +1,8 @@
+.search-bar__container {
+  width: 608px;
+  height: 64px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+}

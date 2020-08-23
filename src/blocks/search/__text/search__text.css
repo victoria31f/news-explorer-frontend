@@ -1,0 +1,9 @@
+.search__text {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  width: 80%;
+  margin-top: 32px;
+  margin-bottom: 0;
+  line-height: 24px;
+}

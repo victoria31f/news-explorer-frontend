@@ -1,0 +1,5 @@
+.menu__item_active {
+  border-bottom: solid 2px;
+  padding-bottom: 24px;
+  color: #ffffff;
+}

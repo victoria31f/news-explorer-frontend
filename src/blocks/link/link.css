@@ -1,0 +1,6 @@
+@import "./_active/link_active.css";
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
