@@ -1,5 +1,18 @@
 @import "./__container/header__container.css";
+@import "./_dark/header_dark.css";
+@import "./__burger/header__burger.css";
 
 .header {
   border-bottom: rgba(255, 255, 255, 0.3) solid 1px;
+  height: 80px;
+}
+
+@media screen and (max-width: 1439px) {
+  .header {
+    height: 66px;
+  }
+}
+
+.header__container_loggedin {
+  display: none;
 }

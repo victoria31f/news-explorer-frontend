@@ -7,11 +7,137 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Сохранённые статьи | NewsExplorer</title>
   <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
+  <link rel="icon" type="image/png" href="<%=require('../images/favicon_16x16.png').default%>" sizes="16x16">
+  <link rel="icon" type="image/png" href="<%=require('../images/favicon_32x32.png').default%>" sizes="32x32">
 </head>
 <body>
-<h1>Articles page</h1>
 
-<a href="./">go to Main</a>
+<header class="header header_dark">
+  <div class="header__container">
+    <a href="./" class="logo logo_black header__logo link">NewsExplorer</a>
+    <nav class="menu">
+      <a href="./" class="menu__item menu__item_black link">Главная</a>
+      <a href="./articles.html" class="menu__item menu__item_black menu__item_active link">Сохранённые статьи</a>
+      <button class="menu__item menu__item_black button-logout">
+        <p class="button-logout__text">Грета</p>
+        <img src="<%=require('../images/header/logout_black.svg').default%>" alt="logout icon"
+             class="menu__icon button-logout__image"></button>
+    </nav>
+  </div>
+</header>
+
+<main class="main">
+
+  <section class="info">
+    <div class="info__container">
+      <h3 class="info__subtitle">Сохранённые статьи</h3>
+      <h2 class="section-title info__title">Грета, у вас <span class="info__number">5</span> сохранённых статей</h2>
+      <p class="info__keywords">По ключевым словам: <i class="info__keywords_bold">Природа, Тайга</i> и <i
+        class="info__keywords_bold">2 другим</i></p>
+    </div>
+  </section>
+
+  <section class="articles">
+    <div class="articles__container">
+      <div class="grid">
+        <div class="grid__item card">
+          <picture>
+            <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
+          </picture>
+          <button class="button card__button-left">Природа</button>
+          <div class="card__btn-container">
+            <button class="button button_square button_bin card__button"></button>
+          </div>
+          <div class="card__content">
+            <p class="card__date">2 августа, 2019</p>
+            <h3 class="card__title">Национальное достояние - парки</h3>
+            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+            <p class="card__source">лента.ру</p>
+          </div>
+        </div>
+        <div class="grid__item card">
+          <picture>
+            <img class="card__image" src="<%=require('../images/results/2.jpg').default%>" alt="flowers">
+          </picture>
+          <button class="button card__button-left">Природа</button>
+          <div class="card__btn-container">
+            <button class="button button_square button_bin card__button"></button>
+          </div>
+          <div class="card__content">
+            <p class="card__date">2 августа, 2019</p>
+            <h3 class="card__title">Национальное достояние — парки</h3>
+            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+            <p class="card__source">лента.ру</p>
+          </div>
+        </div>
+        <div class="grid__item card">
+          <picture>
+            <img class="card__image" src="<%=require('../images/results/3.jpg').default%>" alt="flowers">
+          </picture>
+          <button class="button card__button-left">Тайга</button>
+          <div class="card__btn-container">
+            <button class="button card__delete-msg">Убрать из сохранённых</button>
+            <button class="button button_square button_bin card__button"></button>
+          </div>
+          <div class="card__content">
+            <p class="card__date">2 августа, 2019</p>
+            <h3 class="card__title">Национальное достояние - парки</h3>
+            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+            <p class="card__source">ЛЕНТА.РУ</p>
+          </div>
+        </div>
+        <div class="grid__item card">
+          <picture>
+            <img class="card__image" src="<%=require('../images/results/4.jpg').default%>" alt="flowers">
+          </picture>
+          <button class="button card__button-left">Парки</button>
+          <div class="card__btn-container">
+            <button class="button button_square button_bin card__button"></button>
+          </div>
+          <div class="card__content">
+            <p class="card__date">2 августа, 2019</p>
+            <h3 class="card__title">Национальное достояние - парки</h3>
+            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+            <p class="card__source">ЛЕНТА.РУ</p>
+          </div>
+        </div>
+        <div class="grid__item card">
+          <picture>
+            <img class="card__image" src="<%=require('../images/results/5.jpg').default%>" alt="flowers">
+          </picture>
+          <button class="button card__button-left">Фотография</button>
+          <div class="card__btn-container">
+            <button class="button button_square button_bin card__button"></button>
+          </div>
+          <div class="card__content">
+            <p class="card__date">2 августа, 2019</p>
+            <h3 class="card__title">Национальное достояние - парки</h3>
+            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+            <p class="card__source">ЛЕНТА.РУ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <small class="footer__copyright">&copy; 2020 Supersite, Powered by News API</small>
+  <div class="footer__menu">
+    <a href="./" class="footer__link link">Главная</a>
+    <a href="https://praktikum.yandex.ru/" class="footer__link link">Яндекс.Практикум</a>
+    <div class="footer__social">
+      <a href="https://github.com/victoria31f" class="footer__link link"><img
+        src="<%=require('../images/footer/github.svg').default%>" alt="github"
+        class="footer__icon"></a>
+      <a href="https://www.facebook.com/victoria31f" class="footer__link link"><img src="<%=require('../images/footer/facebook.svg').default%>"
+                                                                                    alt="facebook"
+                                                                                    class="footer__icon"></a>
+    </div>
+  </div>
+</footer>
+
 
 <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
 

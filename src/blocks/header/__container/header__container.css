@@ -1,6 +1,19 @@
 .header__container {
-  padding: 30px 104px 26px 104px;
+  padding: 21px 104px 0 104px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+
+@media screen and (max-width: 1439px) {
+  .header__container {
+    padding: 14px 40px 0 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__container {
+    padding: 16px 16px 0 16px;
+  }
 }

@@ -2,3 +2,9 @@
   width: 80%;
   margin-top: 80px;
 }
+
+@media screen and (max-width: 1439px) {
+  .search__title {
+    margin-top: 38px;
+  }
+}

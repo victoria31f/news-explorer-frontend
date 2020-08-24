@@ -5,3 +5,9 @@
   color: #1A1B22;
   margin-left: 25px;
 }
+
+@media screen and (max-width: 1439px) {
+  .footer__link {
+    margin-left: 15px;
+  }
+}

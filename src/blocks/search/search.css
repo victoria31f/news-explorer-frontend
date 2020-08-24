@@ -3,6 +3,12 @@
 @import "./__search-bar/search__search-bar.css";
 
 .search {
-  width: 608px;
+  max-width: 608px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1439px) {
+  .search {
+    max-width: 452px;
+  }
 }

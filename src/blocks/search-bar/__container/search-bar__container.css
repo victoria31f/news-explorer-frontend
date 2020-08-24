@@ -1,8 +1,14 @@
 .search-bar__container {
-  width: 608px;
+  width: 100%;
   height: 64px;
   background-color: #ffffff;
   border-radius: 100px;
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 1439px) {
+  .search-bar__container {
+    height: 56px;
+  }
 }

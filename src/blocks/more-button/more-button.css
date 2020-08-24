@@ -15,3 +15,9 @@
 .more-button:hover {
   background-color: #fcfcfc;
 }
+
+@media screen and (max-width: 1439px) {
+  .more-button {
+    padding: 15px 60px;
+  }
+}

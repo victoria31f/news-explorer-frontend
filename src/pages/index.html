@@ -16,14 +16,25 @@
 <section class="cover">
 
   <header class="header">
-    <div class="header__container">
+    <div class="header__container header__container_loggedin">
       <a href="./" class="logo header__logo link">NewsExplorer</a>
-      <nav class="menu">
+      <img src="<%=require('../images/header/burger.svg').default%>" alt="menu icon" class="header__burger">
+      <nav class="menu header__menu">
         <a href="./" class="menu__item menu__item_active link">Главная</a>
         <a href="./articles.html" class="menu__item link">Сохранённые статьи</a>
-        <a href="#" class="menu__item link">Грета <img src="<%=require('../images/header/logout.svg').default%>"
-                                                       alt="logout icon"
-                                                       class="menu__icon"></a>
+        <button class="menu__item button-logout">
+          <p class="button-logout__text">Грета</p>
+          <img src="<%=require('../images/header/logout.svg').default%>" alt="logout icon"
+          class="menu__icon button-logout__image"></button>
+      </nav>
+    </div>
+    <div class="header__container">
+      <a href="./" class="logo header__logo link">NewsExplorer</a>
+      <img src="<%=require('../images/header/burger.svg').default%>" alt="menu icon" class="header__burger">
+      <nav class="menu header__menu">
+        <a href="./" class="menu__item menu__item_active link">Главная</a>
+        <button class="menu__item button-logout">
+          <p class="button-logout__text button-login">Авторизоваться</p>
       </nav>
     </div>
   </header>
@@ -55,7 +66,7 @@
             <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
-            <button class="button button_square card__bookmark"></button>
+            <button class="button button_square button_bookmark card__button"></button>
           </div>
           <div class="card__content">
             <p class="card__date">2 августа, 2019</p>
@@ -69,7 +80,7 @@
             <img class="card__image" src="<%=require('../images/results/2.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
-            <button class="button button_square card__bookmark card__bookmark_saved"></button>
+            <button class="button button_square button_bookmark button_bookmark-saved card__button"></button>
           </div>
           <div class="card__content">
             <p class="card__date">2 августа, 2019</p>
@@ -84,7 +95,7 @@
           </picture>
           <div class="card__btn-container">
             <button class="button card__button-login">Войдите, чтобы сохранять статьи</button>
-            <button class="button button_square card__bookmark"></button>
+            <button class="button button_square button_bookmark card__button"></button>
           </div>
           <div class="card__content">
             <p class="card__date">2 августа, 2019</p>
@@ -98,7 +109,7 @@
             <img class="card__image" src="<%=require('../images/results/4.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
-            <button class="button button_square card__bookmark"></button>
+            <button class="button button_square button_bookmark card__button"></button>
           </div>
           <div class="card__content">
             <p class="card__date">2 августа, 2019</p>
@@ -112,7 +123,7 @@
             <img class="card__image" src="<%=require('../images/results/5.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
-            <button class="button button_square card__bookmark"></button>
+            <button class="button button_square button_bookmark card__button"></button>
           </div>
           <div class="card__content">
             <p class="card__date">2 августа, 2019</p>
@@ -126,13 +137,13 @@
             <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
-            <button class="button button_square card__bookmark"></button>
+            <button class="button button_square button_bookmark card__button"></button>
           </div>
           <div class="card__content">
             <p class="card__date">2 августа, 2019</p>
             <h3 class="card__title">Национальное достояние - парки</h3>
             <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">ЛЕНТА.РУ</p>
+            <p class="card__source">лента.ру</p>
           </div>
         </div>
       </div>
@@ -160,7 +171,7 @@
       <img src="<%=require('../images/about/about.jpg').default%>" alt="author"
            class="about__image">
       <div class="about__info">
-        <h2 class="section__title about__title">Об авторе</h2>
+        <h2 class="section-title about__title">Об авторе</h2>
         <p class="about__text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
         <p class="about__text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь
           потенциальным заказчикам.</p>
@@ -169,6 +180,9 @@
   </section>
 
 </main>
+
+<div class="popup">
+</div>
 
 <footer class="footer">
   <small class="footer__copyright">&copy; 2020 Supersite, Powered by News API</small>

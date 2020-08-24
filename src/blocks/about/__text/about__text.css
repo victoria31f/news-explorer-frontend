@@ -9,3 +9,9 @@
 .about__text:first-of-type {
   margin-top: 24px;
 }
+
+@media screen and (max-width: 1439px) {
+  .about__text:first-of-type {
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,9 @@
+.button_bin {
+  background-image: url("../../../images/bin/bin_grey.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button_bin:hover {
+  background-image: url("../../../images/bin/bin_black.svg");
+}

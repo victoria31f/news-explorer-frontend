@@ -1,4 +1,10 @@
 .cover {
   background-image: url("../../images/header/header_bg.jpg");
-  height: 75vh;
+  height: 576px;
+}
+
+@media screen and (max-width: 1439px) {
+  .cover {
+    height: 400px;
+  }
 }

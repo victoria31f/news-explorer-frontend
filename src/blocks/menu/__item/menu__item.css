@@ -1,4 +1,5 @@
 @import "./_active/menu__item_active.css";
+@import "./_black/menu__item_black.css";
 
 .menu__item {
   margin-right: 34px;
@@ -12,9 +13,26 @@
   border-radius: 100px;
   padding: 12px 19px;
   color: #ffffff;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
 }
 
 .menu__item:hover {
   color: #ffffff;
+}
 
+@media screen and (max-width: 1439px) {
+  .menu__item {
+    margin-right: 16px;
+  }
+  .menu__item:last-child {
+    padding: 8px 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .menu__item {
+    margin: 46px 0 0 0;
+  }
 }

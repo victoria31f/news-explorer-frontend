@@ -6,3 +6,9 @@
   border-radius: 15px 15px 0 0;
   background-color: #F5F6F7;
 }
+
+@media screen and (max-width: 1439px) {
+  .card__image {
+    height: 35%;
+  }
+}

@@ -3,3 +3,11 @@
   height: 464px;
   margin-right: 56px;
 }
+
+@media screen and (max-width: 1439px) {
+  .about__image {
+    width: 232px;
+    height: 232px;
+    margin-right: 32px;
+  }
+}

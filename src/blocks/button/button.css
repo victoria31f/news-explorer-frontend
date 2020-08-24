@@ -1,4 +1,7 @@
 @import "./_square/button_square.css";
+@import "./_bookmark/button_bookmark.css";
+@import "./_bookmark-saved/button_bookmark-saved.css";
+@import "./_bin/button_bin.css";
 
 .button {
   background-color: #FFFFFF;

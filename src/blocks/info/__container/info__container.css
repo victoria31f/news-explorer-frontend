@@ -1,0 +1,11 @@
+.info__container {
+  padding: 40px 0 56px 104px;
+  width: 500px;
+}
+
+@media screen and (max-width: 1439px) {
+  .info__container {
+    padding: 24px 0 32px 40px;
+    width: 340px;
+  }
+}

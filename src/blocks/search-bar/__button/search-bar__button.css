@@ -22,3 +22,9 @@
 .search-bar__button:active {
   background-color: #2A65CC;
 }
+
+@media screen and (max-width: 1439px) {
+  .search-bar__button {
+    width: 160px;
+  }
+}

@@ -7,3 +7,12 @@
   padding-top: 16px;
   color: #1A1B22;
 }
+
+@media screen and (max-width: 1439px) {
+  .card__text {
+    padding-top: 10px;
+    height: 88px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
