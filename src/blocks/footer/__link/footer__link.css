@@ -11,3 +11,17 @@
     margin-left: 15px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .footer__link {
+    margin: 0;
+  }
+  .footer__link:first-of-type {
+    margin-bottom: 8px;
+  }
+
+  .footer__social .footer__link:last-of-type {
+    margin-left: 24px;
+  }
+}
+

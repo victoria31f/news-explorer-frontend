@@ -7,3 +7,9 @@
     padding-bottom: 32px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .results__title {
+    padding-bottom: 24px;
+  }
+}

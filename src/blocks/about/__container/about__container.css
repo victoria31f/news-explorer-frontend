@@ -6,11 +6,14 @@
 @media screen and (max-width: 1439px) {
   .about__container {
     padding: 40px;
+    max-width: 688px;
+    margin: 0 auto;
   }
 }
 
 @media screen and (max-width: 767px) {
   .about__container {
     flex-direction: column;
+    padding: 32px 16px 80px 16px;
   }
 }

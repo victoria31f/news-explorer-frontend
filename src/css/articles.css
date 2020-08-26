@@ -1,5 +1,6 @@
 @import "../vendor/normalize.css";
 @import "../vendor/fonts.css";
+@import "../blocks/page/page.css";
 @import "../blocks/link/link.css";
 @import "../blocks/header/header.css";
 @import "../blocks/logo/logo.css";

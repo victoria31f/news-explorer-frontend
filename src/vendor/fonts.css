@@ -32,3 +32,9 @@
   src: url("./fonts/sourcesanspro-regular.woff");
   font-weight: 400;
 }
+
+@font-face {
+  font-family: Inter, sans-serif;
+  src: url("fonts/inter-regular.woff");
+  font-weight: 400;
+}

@@ -1,3 +1,6 @@
+@import "./_loggedin/header__container_loggedin.css";
+@import "./_menu-opened/header__container_menu-opened.css";
+
 .header__container {
   padding: 21px 104px 0 104px;
   display: flex;
@@ -14,6 +17,8 @@
 
 @media screen and (max-width: 767px) {
   .header__container {
-    padding: 16px 16px 0 16px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 16px;
   }
 }

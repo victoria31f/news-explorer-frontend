@@ -8,3 +8,9 @@
     margin-top: 48px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .search__search-bar {
+    margin-top: 122px;
+  }
+}

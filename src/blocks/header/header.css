@@ -1,10 +1,13 @@
 @import "./__container/header__container.css";
 @import "./_dark/header_dark.css";
 @import "./__burger/header__burger.css";
+@import "./__menu/header__menu.css";
+@import "./__dark-area/header__dark-area.css";
 
 .header {
   border-bottom: rgba(255, 255, 255, 0.3) solid 1px;
   height: 80px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1439px) {
@@ -13,6 +16,15 @@
   }
 }
 
-.header__container_loggedin {
-  display: none;
+@media screen and (max-width: 767px) {
+  .header {
+    height: 56px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    background-size: cover;
+    background-image: url("../../images/header/cover_bg_mobile.jpg");
+  }
 }

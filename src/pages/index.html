@@ -10,32 +10,35 @@
   <link rel="icon" type="image/png" href="<%=require('../images/favicon_16x16.png').default%>" sizes="16x16">
   <link rel="icon" type="image/png" href="<%=require('../images/favicon_32x32.png').default%>" sizes="32x32">
 </head>
-<body>
+<body class="page">
 
 
 <section class="cover">
 
   <header class="header">
-    <div class="header__container header__container_loggedin">
-      <a href="./" class="logo header__logo link">NewsExplorer</a>
-      <img src="<%=require('../images/header/burger.svg').default%>" alt="menu icon" class="header__burger">
-      <nav class="menu header__menu">
-        <a href="./" class="menu__item menu__item_active link">Главная</a>
-        <a href="./articles.html" class="menu__item link">Сохранённые статьи</a>
-        <button class="menu__item button-logout">
-          <p class="button-logout__text">Грета</p>
-          <img src="<%=require('../images/header/logout.svg').default%>" alt="logout icon"
-          class="menu__icon button-logout__image"></button>
-      </nav>
-    </div>
+<!--    <div class="header__container header__container_loggedin">-->
+<!--      <a href="./" class="logo header__logo link">NewsExplorer</a>-->
+<!--      <img src="<%=require('../images/header/burger.svg').default%>" alt="menu icon" class="header__burger">-->
+<!--      <nav class="menu header__menu">-->
+<!--        <a href="./" class="menu__item menu__item_active link">Главная</a>-->
+<!--        <a href="./articles.html" class="menu__item link">Сохранённые статьи</a>-->
+<!--        <button class="menu__item button-logout">-->
+<!--          <p class="button-logout__text">Грета</p>-->
+<!--          <img src="<%=require('../images/header/logout.svg').default%>" alt="logout icon"-->
+<!--          class="menu__icon button-logout__image"></button>-->
+<!--      </nav>-->
+<!--    </div>-->
     <div class="header__container">
       <a href="./" class="logo header__logo link">NewsExplorer</a>
       <img src="<%=require('../images/header/burger.svg').default%>" alt="menu icon" class="header__burger">
-      <nav class="menu header__menu">
-        <a href="./" class="menu__item menu__item_active link">Главная</a>
-        <button class="menu__item button-logout">
-          <p class="button-logout__text button-login">Авторизоваться</p>
-      </nav>
+      <img src="<%=require('../images/close.svg').default%>" alt="close icon" class="menu__close">
+      <div class="header__dark-area">
+        <nav class="menu header__menu">
+          <a href="./" class="menu__item menu__item_active link">Главная</a>
+          <button class="menu__item button-logout">
+            <p class="button-logout__text button-login">Авторизоваться</p>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -62,7 +65,7 @@
       <h2 class="section-title results__title">Результаты поиска</h2>
       <div class="grid">
         <div class="grid__item card">
-          <picture>
+          <picture class="grid__image">
             <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -76,7 +79,7 @@
           </div>
         </div>
         <div class="grid__item card">
-          <picture>
+          <picture class="grid__image">
             <img class="card__image" src="<%=require('../images/results/2.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -90,7 +93,7 @@
           </div>
         </div>
         <div class="grid__item card">
-          <picture>
+          <picture class="grid__image">
             <img class="card__image" src="<%=require('../images/results/3.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -105,7 +108,7 @@
           </div>
         </div>
         <div class="grid__item card">
-          <picture>
+          <picture class="grid__image">
             <img class="card__image" src="<%=require('../images/results/4.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -119,7 +122,7 @@
           </div>
         </div>
         <div class="grid__item card">
-          <picture>
+          <picture class="grid__image">
             <img class="card__image" src="<%=require('../images/results/5.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -133,7 +136,7 @@
           </div>
         </div>
         <div class="grid__item card">
-          <picture>
+          <picture class="grid__image">
             <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -179,16 +182,21 @@
     </div>
   </section>
 
+  <div class="popup">
+    <div class="field-not-clickable popup__content" id="popup-content">
+      <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close new-card__close">
+    </div>
+  </div>
+
 </main>
 
-<div class="popup">
-</div>
 
 <footer class="footer">
   <small class="footer__copyright">&copy; 2020 Supersite, Powered by News API</small>
   <div class="footer__menu">
-    <a href="./" class="footer__link link">Главная</a>
-    <a href="https://praktikum.yandex.ru/" class="footer__link link">Яндекс.Практикум</a>
+    <div class="footer__links">
+      <a href="./" class="footer__link link">Главная</a>
+      <a href="https://praktikum.yandex.ru/" class="footer__link link">Яндекс.Практикум</a></div>
     <div class="footer__social">
       <a href="https://github.com/victoria31f" class="footer__link link"><img
         src="<%=require('../images/footer/github.svg').default%>" alt="github"
