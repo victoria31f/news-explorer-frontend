@@ -9,3 +9,11 @@
     width: 340px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .info__container {
+    width: 100%;
+    padding: 8px 16px 32px 16px;
+    box-sizing: border-box;
+  }
+}

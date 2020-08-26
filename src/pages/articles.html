@@ -10,23 +10,28 @@
   <link rel="icon" type="image/png" href="<%=require('../images/favicon_16x16.png').default%>" sizes="16x16">
   <link rel="icon" type="image/png" href="<%=require('../images/favicon_32x32.png').default%>" sizes="32x32">
 </head>
-<body>
+<body class="page">
 
 <header class="header header_dark">
   <div class="header__container">
     <a href="./" class="logo logo_black header__logo link">NewsExplorer</a>
-    <nav class="menu">
-      <a href="./" class="menu__item menu__item_black link">Главная</a>
-      <a href="./articles.html" class="menu__item menu__item_black menu__item_active link">Сохранённые статьи</a>
-      <button class="menu__item menu__item_black button-logout">
-        <p class="button-logout__text">Грета</p>
-        <img src="<%=require('../images/header/logout_black.svg').default%>" alt="logout icon"
-             class="menu__icon button-logout__image"></button>
-    </nav>
+    <img src="<%=require('../images/header/burger_black.svg').default%>" alt="menu icon" class="header__burger">
+    <img src="<%=require('../images/close_white.svg').default%>" alt="close icon" class="menu__close">
+    <div class="header__dark-area">
+      <nav class="menu">
+        <a href="./" class="menu__item menu__item_black link">Главная</a>
+        <a href="./articles.html" class="menu__item menu__item_black menu__item_active link">Сохранённые статьи</a>
+        <button class="menu__item menu__item_black button-logout">
+          <p class="button-logout__text">Грета</p>
+          <img src="<%=require('../images/header/logout_black.svg').default%>" alt="logout icon"
+               class="menu__icon button-logout__image">
+        </button>
+      </nav>
+    </div>
   </div>
 </header>
 
-<main class="main">
+<main class="main main_articles">
 
   <section class="info">
     <div class="info__container">
@@ -120,20 +125,29 @@
     </div>
   </section>
 
+  <div class="popup">
+    <div class="field-not-clickable popup__content" id="popup-content">
+      <img src="<%=require('../images/close.svg').default%>" alt="" class="popup__close new-card__close">
+    </div>
+  </div>
+
+
 </main>
 
 <footer class="footer">
   <small class="footer__copyright">&copy; 2020 Supersite, Powered by News API</small>
   <div class="footer__menu">
-    <a href="./" class="footer__link link">Главная</a>
-    <a href="https://praktikum.yandex.ru/" class="footer__link link">Яндекс.Практикум</a>
+    <div class="footer__links">
+      <a href="./" class="footer__link link">Главная</a>
+      <a href="https://praktikum.yandex.ru/" class="footer__link link">Яндекс.Практикум</a>
+    </div>
     <div class="footer__social">
-      <a href="https://github.com/victoria31f" class="footer__link link"><img
-        src="<%=require('../images/footer/github.svg').default%>" alt="github"
-        class="footer__icon"></a>
-      <a href="https://www.facebook.com/victoria31f" class="footer__link link"><img src="<%=require('../images/footer/facebook.svg').default%>"
-                                                                                    alt="facebook"
-                                                                                    class="footer__icon"></a>
+      <a href="https://github.com/victoria31f" class="footer__link link">
+        <img src="<%=require('../images/footer/github.svg').default%>" alt="github" class="footer__icon">
+      </a>
+      <a href="https://www.facebook.com/victoria31f" class="footer__link link">
+        <img src="<%=require('../images/footer/facebook.svg').default%>" alt="facebook" class="footer__icon">
+      </a>
     </div>
   </div>
 </footer>

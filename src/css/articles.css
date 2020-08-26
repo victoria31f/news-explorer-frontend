@@ -7,6 +7,7 @@
 @import "../blocks/menu/menu.css";
 @import "../blocks/button-logout/button-logout.css";
 @import "../blocks/title/title.css";
+@import "../blocks/main/main.css";
 @import "../blocks/articles/articles.css";
 @import "../blocks/grid/grid.css";
 @import "../blocks/card/card.css";
@@ -15,3 +16,4 @@
 @import "../blocks/button/button.css";
 @import "../blocks/footer/footer.css";
 @import "../blocks/info/info.css";
+@import "../blocks/popup/popup.css";

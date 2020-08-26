@@ -1,3 +1,7 @@
 @import "./__container/info__container.css";
 @import "./__subtitle/info__subtitle.css";
 @import "./__keywords/info__keywords.css";
+
+.info {
+  background-color: #FFFFFF;
+}

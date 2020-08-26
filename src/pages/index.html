@@ -33,10 +33,11 @@
       <img src="<%=require('../images/header/burger.svg').default%>" alt="menu icon" class="header__burger">
       <img src="<%=require('../images/close.svg').default%>" alt="close icon" class="menu__close">
       <div class="header__dark-area">
-        <nav class="menu header__menu">
+        <nav class="menu">
           <a href="./" class="menu__item menu__item_active link">Главная</a>
           <button class="menu__item button-logout">
             <p class="button-logout__text button-login">Авторизоваться</p>
+          </button>
         </nav>
       </div>
     </div>
@@ -196,14 +197,15 @@
   <div class="footer__menu">
     <div class="footer__links">
       <a href="./" class="footer__link link">Главная</a>
-      <a href="https://praktikum.yandex.ru/" class="footer__link link">Яндекс.Практикум</a></div>
+      <a href="https://praktikum.yandex.ru/" class="footer__link link">Яндекс.Практикум</a>
+    </div>
     <div class="footer__social">
-      <a href="https://github.com/victoria31f" class="footer__link link"><img
-        src="<%=require('../images/footer/github.svg').default%>" alt="github"
-                                             class="footer__icon"></a>
-      <a href="https://www.facebook.com/victoria31f" class="footer__link link"><img src="<%=require('../images/footer/facebook.svg').default%>"
-                                               alt="facebook"
-                                             class="footer__icon"></a>
+      <a href="https://github.com/victoria31f" class="footer__link link">
+        <img src="<%=require('../images/footer/github.svg').default%>" alt="github" class="footer__icon">
+      </a>
+      <a href="https://www.facebook.com/victoria31f" class="footer__link link">
+        <img src="<%=require('../images/footer/facebook.svg').default%>" alt="facebook" class="footer__icon">
+      </a>
     </div>
   </div>
 </footer>

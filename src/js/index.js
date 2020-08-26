@@ -75,7 +75,9 @@ const openCloseBurgerMenu = () => {
 
 
 document.querySelector('.button-login').addEventListener('click', () => {
-  container.removeChild(container.lastElementChild);
+  // if (container.lastElementChild.className !== 'popup__close') {
+  //   container.removeChild(container.lastElementChild);
+  // }
   container.insertAdjacentHTML('beforeend', login);
   popup.classList.add('popup_is-opened');
   openCloseBurgerMenu();
