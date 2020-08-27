@@ -70,7 +70,9 @@ const openCloseBurgerMenu = () => {
   headerContainer.classList.toggle('header__container_menu-opened');
   darkArea.classList.toggle('header__dark-area_opened');
   burgerMenu.classList.toggle('header__burger_invisible');
-  closeIcon.classList.toggle('menu__close_visible');
+  if (screen.width < 767) {
+    closeIcon.classList.toggle('menu__close_visible');
+  }
 }
 
 

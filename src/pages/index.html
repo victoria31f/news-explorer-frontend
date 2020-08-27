@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>News Explorer</title>
   <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
@@ -13,7 +13,7 @@
 <body class="page">
 
 
-<section class="cover">
+<div class="cover">
 
   <header class="header">
 <!--    <div class="header__container header__container_loggedin">-->
@@ -23,7 +23,7 @@
 <!--        <a href="./" class="menu__item menu__item_active link">Главная</a>-->
 <!--        <a href="./articles.html" class="menu__item link">Сохранённые статьи</a>-->
 <!--        <button class="menu__item button-logout">-->
-<!--          <p class="button-logout__text">Грета</p>-->
+<!--          <span class="button-logout__text">Грета</span>-->
 <!--          <img src="<%=require('../images/header/logout.svg').default%>" alt="logout icon"-->
 <!--          class="menu__icon button-logout__image"></button>-->
 <!--      </nav>-->
@@ -36,27 +36,27 @@
         <nav class="menu">
           <a href="./" class="menu__item menu__item_active link">Главная</a>
           <button class="menu__item button-logout">
-            <p class="button-logout__text button-login">Авторизоваться</p>
+            <span class="button-logout__text button-login">Авторизоваться</span>
           </button>
         </nav>
       </div>
     </div>
   </header>
 
-  <div class="search">
+  <section class="search">
     <h1 class="title search__title">Что в мире творится?</h1>
     <p class="search__text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
     <form class="search-bar search__search-bar">
       <div class="search-bar__container">
         <label>
-          <input type="text" class="search-bar__input" placeholder="Введите тему новости" name="search">
+          <input type="text" class="search-bar__input" placeholder="Введите тему новости" name="search" required>
         </label>
         <button class="search-bar__button">Искать</button>
       </div>
     </form>
-  </div>
+  </section>
 
-</section>
+</div>
 
 <main class="main">
 
@@ -67,6 +67,7 @@
       <div class="grid">
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/1_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -81,6 +82,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/2_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/2.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -95,6 +97,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/3_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/3.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -110,6 +113,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/4_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/4.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -124,6 +128,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/5_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/5.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">
@@ -138,6 +143,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/1_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
           </picture>
           <div class="card__btn-container">

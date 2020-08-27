@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Сохранённые статьи | NewsExplorer</title>
   <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
@@ -22,7 +22,7 @@
         <a href="./" class="menu__item menu__item_black link">Главная</a>
         <a href="./articles.html" class="menu__item menu__item_black menu__item_active link">Сохранённые статьи</a>
         <button class="menu__item menu__item_black button-logout">
-          <p class="button-logout__text">Грета</p>
+          <span class="button-logout__text">Грета</span>
           <img src="<%=require('../images/header/logout_black.svg').default%>" alt="logout icon"
                class="menu__icon button-logout__image">
         </button>
@@ -47,6 +47,7 @@
       <div class="grid">
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/1_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
           </picture>
           <button class="button card__button-left">Природа</button>
@@ -62,6 +63,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/2_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/2.jpg').default%>" alt="flowers">
           </picture>
           <button class="button card__button-left">Природа</button>
@@ -77,6 +79,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/3_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/3.jpg').default%>" alt="flowers">
           </picture>
           <button class="button card__button-left">Тайга</button>
@@ -93,6 +96,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/4_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/4.jpg').default%>" alt="flowers">
           </picture>
           <button class="button card__button-left">Парки</button>
@@ -108,6 +112,7 @@
         </div>
         <div class="grid__item card">
           <picture class="grid__image">
+            <source media="(max-width:767px)" srcset="<%=require('../images/results/5_mobile.jpg').default%>">
             <img class="card__image" src="<%=require('../images/results/5.jpg').default%>" alt="flowers">
           </picture>
           <button class="button card__button-left">Фотография</button>
