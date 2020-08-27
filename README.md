@@ -3,6 +3,10 @@
 
 Author: Victoria Fedotkina
 
+[Main page](https://victoria31f.github.io/news-explorer-frontend)
+
+[Saved articles](https://victoria31f.github.io/news-explorer-frontend/articles)
+
 This is a study project. It represents news search by keywords with option to
 save the news you liked in your Profile. A user can sign up and then log in to
 see his saved articles, user can delete them from the list as well.
