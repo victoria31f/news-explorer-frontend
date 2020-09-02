@@ -4,7 +4,7 @@ const container = document.querySelector('#popup-content');
 const popup = document.querySelector('.popup');
 const login = `
     <div class="field-not-clickable">
-      <h3 class="popup__title field-not-clickable">Вход</h3>
+      <h3 class="popup__title">Вход</h3>
       <form class="popup__form field-not-clickable" id="login" name="login">
         <label for="email" class="popup__label">Email</label>
         <input type="email" name="email" id="email" required minlength="2" maxlength="30"

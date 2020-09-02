@@ -1,15 +1,37 @@
 import '../css/main.css';
-import { loginPopupTemplate, signupPopupTemplate, successPopupTemplate, popupContainer, closePopupButton, popup } from './constants/popupMarkup';
+import {
+    loginPopupTemplate,
+    signupPopupTemplate,
+    successPopupTemplate,
+    popupContainer,
+    closePopupButton,
+    popup,
+    closeField,
+    signupButton
+} from './constants/popupMarkup';
+
 import Popup from "./components/Popup";
 
 const loginButton = document.querySelector('.button-login');
 
-const loginPopup = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton);
+const signupPopup = () => {
+  const signup = new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField);
+  signup.openSecond();
+}
+
+const loginPopup = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup);
 
 loginButton.addEventListener('click', () => {
-  console.log('clicked');
-  loginPopup.open();
+    console.log('clicked');
+    loginPopup.open();
 });
+
+
+//
+// signupButton.addEventListener('click', () => {
+//   console.log('signup clicked');
+//   signupPopup.open();
+// })
 
 
 // const popup = document.querySelector('.popup');

@@ -4,13 +4,12 @@ export default class BaseComponent {
   }
 
   _addListener (elem, event, callback) {
-    elem.addEventListener(event, callback);
-    console.log('even added');
+    if (elem) elem.addEventListener(event, callback);
   }
 
   _setListeners(listeners) {
     listeners.forEach(listener => {
-      this._addListener(listener.elem, listener.even, listener.callback);
+      this._addListener(listener.elem, listener.event, listener.callback);
     });
   }
 
