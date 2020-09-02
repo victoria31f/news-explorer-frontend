@@ -1,0 +1,39 @@
+.search-bar__button {
+  border-radius: 100px;
+  width: 168px;
+  background-color: #2F71E5;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: -1px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.search-bar__button:hover {
+  background-color: #347EFF;
+}
+
+.search-bar__button:active {
+  background-color: #2A65CC;
+}
+
+@media screen and (max-width: 1439px) {
+  .search-bar__button {
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search-bar__button {
+    height: 56px;
+    width: 100%;
+    margin-top: 16px;
+
+  }
+}

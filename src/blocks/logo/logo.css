@@ -1,0 +1,8 @@
+@import "./_black/logo_black.css";
+
+.logo {
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 700;
+}

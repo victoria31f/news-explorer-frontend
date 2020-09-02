@@ -1,0 +1,12 @@
+.card__button-login {
+  padding-left: 9px;
+  padding-right: 9px;
+  font-size: 10px;
+}
+
+@media screen and (max-width: 1439px) {
+  .card__button-login {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}

@@ -1,0 +1,13 @@
+.card__btn-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+}
+
+@media screen and (max-width: 1439px) {
+  .card__btn-container {
+    top: 8px;
+    right: 8px;
+  }
+}

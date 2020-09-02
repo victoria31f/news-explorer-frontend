@@ -1,0 +1,22 @@
+.cover {
+  background-image: url("../../images/header/header_bg.jpg");
+  height: 576px;
+}
+
+@media screen and (max-width: 1439px) {
+  .cover {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cover {
+    background-image: url("../../images/header/cover_bg_mobile.jpg");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 56px;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+}

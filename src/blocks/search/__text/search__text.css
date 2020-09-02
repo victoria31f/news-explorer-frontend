@@ -1,0 +1,23 @@
+.search__text {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  width: 80%;
+  margin-top: 32px;
+  margin-bottom: 0;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1439px) {
+  .search__text {
+    font-size: 18px;
+    margin-top: 16px;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search__text {
+    width: 100%;
+  }
+}

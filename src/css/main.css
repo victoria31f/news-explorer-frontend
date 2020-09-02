@@ -1,0 +1,30 @@
+@import "../vendor/normalize.css";
+@import "../vendor/fonts.css";
+@import "../blocks/page/page.css";
+@import "../blocks/link/link.css";
+@import "../blocks/cover/cover.css";
+@import "../blocks/header/header.css";
+@import "../blocks/logo/logo.css";
+@import "../blocks/menu/menu.css";
+@import "../blocks/button-logout/button-logout.css";
+@import "../blocks/title/title.css";
+@import "../blocks/search/search.css";
+@import "../blocks/search-bar/search-bar.css";
+@import "../blocks/results/results.css";
+@import "../blocks/grid/grid.css";
+@import "../blocks/card/card.css";
+@import "../blocks/section-title/section-title.css";
+@import "../blocks/more-button/more-button.css";
+@import "../blocks/button/button.css";
+@import "../blocks/preloader-block/preloader-block.css";
+@import "../blocks/circle-preloader/circle-preloader.css";
+@import "../blocks/hidden/hidden.css";
+@import "../blocks/not-found/not-found.css";
+@import "../blocks/about/about.css";
+@import "../blocks/footer/footer.css";
+@import "../blocks/popup/popup.css";
+
+
+body {
+  background-color: #fff;
+}

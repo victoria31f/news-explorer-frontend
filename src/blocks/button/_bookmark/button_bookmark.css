@@ -1,0 +1,9 @@
+.button_bookmark {
+  background-image: url("../../../images/bookmark/bookmark_normal.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button_bookmark:hover {
+  background-image: url("../../../images/bookmark/bookmark_hover.svg");
+}

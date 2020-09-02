@@ -1,0 +1,19 @@
+.grid__item:before {
+  content: "";
+  display: block;
+  height: 0;
+  width: 0;
+  padding-bottom: calc(45% + 100%);
+}
+
+@media screen and (max-width: 1439px) {
+  .grid__item:before {
+    padding-bottom: calc(85% + 100%);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .grid__item:before {
+    padding-bottom: calc(55% + 100%);
+  }
+}

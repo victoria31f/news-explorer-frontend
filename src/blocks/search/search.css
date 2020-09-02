@@ -1,0 +1,20 @@
+@import "./__title/search__title.css";
+@import "./__text/search__text.css";
+@import "./__search-bar/search__search-bar.css";
+
+.search {
+  max-width: 608px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1439px) {
+  .search {
+    max-width: 452px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search {
+    max-width: 288px;
+  }
+}

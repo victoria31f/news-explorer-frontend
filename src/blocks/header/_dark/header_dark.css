@@ -1,0 +1,10 @@
+.header_dark.header_dark {
+  border-color: #e0dede;
+  background-color: #FFFFFF;
+}
+
+@media screen and (max-width: 767px) {
+  .header_dark.header_dark {
+    background-image: none;
+  }
+}

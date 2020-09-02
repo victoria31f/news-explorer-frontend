@@ -1,0 +1,17 @@
+.card__text {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+  padding-top: 16px;
+  color: #1A1B22;
+}
+
+@media screen and (max-width: 1439px) {
+  .card__text {
+    padding-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

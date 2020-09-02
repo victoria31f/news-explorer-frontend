@@ -1,0 +1,12 @@
+.menu__item_black.menu__item_black {
+  color: #1A1B22;
+}
+
+.menu__item_black:last-child.menu__item_black {
+  color: #1A1B22;
+  border-color: #1A1B22;
+}
+
+.menu__item_black:hover.menu__item_black {
+  color: #1A1B22;
+}

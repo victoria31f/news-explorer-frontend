@@ -1,0 +1,14 @@
+.card__button-left {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1439px) {
+  .card__button-left {
+    top: 8px;
+    left: 8px;
+  }
+}

@@ -1,0 +1,8 @@
+@import "./__container/about__container.css";
+@import "./__image/about__image.css";
+@import "./__info/about__info.css";
+@import "./__text/about__text.css";
+
+.about {
+  background-color: #FFFFFF;
+}

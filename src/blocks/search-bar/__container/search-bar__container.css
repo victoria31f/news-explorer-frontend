@@ -1,0 +1,31 @@
+.search-bar__container {
+  width: 100%;
+  height: 64px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-bar__container:focus-within {
+  box-shadow: 0 0 0 1px #2f71e5;
+}
+
+@media screen and (max-width: 1439px) {
+  .search-bar__container {
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search-bar__container {
+    flex-direction: column;
+    background-color: transparent;
+    height: auto;
+    box-shadow: none;
+  }
+
+  .search-bar__container:focus-within {
+    box-shadow: none;
+  }
+}

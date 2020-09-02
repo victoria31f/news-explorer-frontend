@@ -1,0 +1,9 @@
+.button_square.button_square {
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.button_square.button_square:hover {
+  background-color: #FFFFFF;
+}
