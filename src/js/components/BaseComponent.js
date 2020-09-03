@@ -8,6 +8,7 @@ export default class BaseComponent {
   }
 
   _setListeners(listeners) {
+    Array.prototype.push.apply(this._listeners, listeners);
     listeners.forEach(listener => {
       this._addListener(listener.elem, listener.event, listener.callback);
     });

@@ -15,16 +15,14 @@ import Popup from "./components/Popup";
 const loginButton = document.querySelector('.button-login');
 
 const signupPopup = () => {
-  const signup = new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField);
-  signup.openSecond();
+  new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup).open();
 }
 
-const loginPopup = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup);
+const loginPopup = () => {
+  new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup).open();
+}
 
-loginButton.addEventListener('click', () => {
-    console.log('clicked');
-    loginPopup.open();
-});
+loginButton.addEventListener('click', loginPopup);
 
 
 //

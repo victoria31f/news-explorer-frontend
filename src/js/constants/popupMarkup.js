@@ -22,14 +22,14 @@ const loginPopupTemplate = `
         <button type="submit"
                 class="popup__button edit-profile__button_active"
                 id="login-button">Войти</button>
-        <span class="popup__text">или <span class="popup__text_blue popup__signup-button">Зарегистрироваться</span></span>
+        <span class="popup__text">или <span class="popup__text_blue popup__signup-button popup__another-popup-button">Зарегистрироваться</span></span>
       </form>
     </div>
   `
 
 const signupPopupTemplate = `
     <div class="popup__form-container">
-      <h3 class="popup__title">Вход</h3>
+      <h3 class="popup__title">Регистрация</h3>
       <form class="popup__form" id="login" name="login">
 
         <label for="email" class="popup__label">Email</label>
@@ -50,7 +50,7 @@ const signupPopupTemplate = `
         <button type="submit"
                 class="popup__button edit-profile__button_active"
                 id="signup-button">Зарегистрироваться</button>
-        <span class="popup__text">или <span class="popup__text_blue popup__signin-button">Войти</span></span>
+        <span class="popup__text">или <span class="popup__text_blue popup__signin-button popup__another-popup-button">Войти</span></span>
       </form>
     </div>
   `

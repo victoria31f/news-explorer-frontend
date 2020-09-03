@@ -1,14 +1,14 @@
 import BaseComponent from "./BaseComponent";
 
 export default class Popup extends BaseComponent {
-  constructor(popup, container, template, closeButton, closeField, signupPopupInstance) {
+  constructor(popup, container, template, closeButton, closeField, popupInstance) {
     super();
     this.popup = popup;
     this.container = container;
     this.template = template;
     this.closeButton = closeButton;
     this.closeField = closeField;
-    this.signupPopupInstance = signupPopupInstance;
+    this.popupInstance = popupInstance;
   }
 
   _setContent() {
@@ -20,12 +20,8 @@ export default class Popup extends BaseComponent {
     // this.container.lastElementChild.remove();
   }
 
-  openSecond() {
-    this._clearContent();
-    this.open();
-  }
-
   open() {
+    const parent = this;
     this._setContent();
     this.popup.classList.add('popup_is-opened');
     this._setListeners([
@@ -41,24 +37,17 @@ export default class Popup extends BaseComponent {
         elem: this.closeField,
         event: 'click',
         callback: () => {
-          console.log('click on close');
+          console.log('click on close field');
           this._close();
         },
       },
       {
-        elem: document.querySelector('.popup__signup-button'),
+        elem: document.querySelector('.popup__another-popup-button'),
         event: 'click',
         callback: () => {
           console.log('click on signup');
-          this.signupPopupInstance();
-        },
-      },
-      {
-        elem: document.querySelector('.button-login'),
-        event: 'click',
-        callback: () => {
-          console.log('click on signup');
-          this.signupPopupInstance();
+          parent._close();
+          this.popupInstance();
         },
       }
     ]);
