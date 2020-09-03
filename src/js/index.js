@@ -11,8 +11,17 @@ import {
 } from './constants/popupMarkup';
 
 import Popup from "./components/Popup";
+import NewsApi from "./api/NewsApi";
 
 const loginButton = document.querySelector('.button-login');
+
+const newsApi = new NewsApi({
+  headers: {
+    authorization: 'c6e72a1aa4164fd0b73957a7b88b309f',
+    'Content-Type': 'application/json',
+    keywords: '',
+  }
+})
 
 const signupPopup = () => {
   new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup).open();
