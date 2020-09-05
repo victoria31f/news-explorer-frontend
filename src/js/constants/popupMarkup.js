@@ -8,19 +8,20 @@ const signupButton = document.querySelector('.popup__signup-button');
 const loginPopupTemplate = `
     <div class="popup__form-container">
       <h3 class="popup__title">Вход</h3>
-      <form class="popup__form" id="login" name="login">
+      <form class="popup__form" id="login" name="login" novalidate>
         <label for="email" class="popup__label">Email</label>
         <input type="email" name="email" id="email" required minlength="2" maxlength="30"
                class="popup__input popup__input_type_email" placeholder="Введите почту">
         <span class="popup__error" id="error-email"></span>
 
         <label for="password" class="popup__label">Пароль</label>
-        <input type="text" name="password" id="password" required minlength="8" maxlength="30"
+        <input type="password" name="password" id="password" required minlength="8" maxlength="30"
                class="popup__input popup__input_type_password" placeholder="Введите пароль">
         <span class="popup__error" id="error-password"></span>
 
         <button type="submit"
-                class="popup__button edit-profile__button_active"
+                name="submit"
+                class="popup__button"
                 id="login-button">Войти</button>
         <span class="popup__text">или <span class="popup__text_blue popup__signup-button popup__another-popup-button">Зарегистрироваться</span></span>
       </form>
@@ -30,7 +31,7 @@ const loginPopupTemplate = `
 const signupPopupTemplate = `
     <div class="popup__form-container">
       <h3 class="popup__title">Регистрация</h3>
-      <form class="popup__form" id="login" name="login">
+      <form class="popup__form" id="signup" name="signup" novalidate>
 
         <label for="email" class="popup__label">Email</label>
         <input type="email" name="email" id="email" required minlength="2" maxlength="30"
@@ -38,7 +39,7 @@ const signupPopupTemplate = `
         <span class="popup__error" id="error-email"></span>
 
         <label for="password" class="popup__label">Пароль</label>
-        <input type="text" name="password" id="password" required minlength="8" maxlength="30"
+        <input type="password" name="password" id="password" required minlength="8" maxlength="30"
                class="popup__input popup__input_type_password" placeholder="Введите пароль">
         <span class="popup__error" id="error-password"></span>
 
@@ -48,7 +49,8 @@ const signupPopupTemplate = `
         <span class="popup__error" id="error-name"></span>
 
         <button type="submit"
-                class="popup__button edit-profile__button_active"
+                name="submit"
+                class="popup__button"
                 id="signup-button">Зарегистрироваться</button>
         <span class="popup__text">или <span class="popup__text_blue popup__signin-button popup__another-popup-button">Войти</span></span>
       </form>

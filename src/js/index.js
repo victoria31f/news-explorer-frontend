@@ -12,8 +12,12 @@ import {
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
+import Form from "./components/Form";
+import MainApi from "./api/MainApi";
 
 const loginButton = document.querySelector('.button-login');
+// const loginFormElem = document.forms['login'];
+// const signupFormElem = document.forms['signup'];
 
 const newsApi = new NewsApi({
   headers: {
@@ -23,12 +27,21 @@ const newsApi = new NewsApi({
   }
 })
 
+const mainApi = new MainApi({
+  baseUrl: 'https://api.explorerofnews.ga',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
+
 const signupPopup = () => {
   new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup).open();
+  new Form(document.forms['signup']).setListeners(mainApi.signup);
 }
 
 const loginPopup = () => {
   new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup).open();
+  new Form(document.forms['login']).setListeners(mainApi.signin);
 }
 
 loginButton.addEventListener('click', loginPopup);
