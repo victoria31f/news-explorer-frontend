@@ -3,25 +3,26 @@ export default class NewsApi {
     this.options = options;
     // this.url = this.options.baseUrl;
     this.headers = this.options.headers;
-    this.authorization = this.headers.authorization;
+    this.key = this.options.apiKey;
     this.contentType = this.headers['Content-Type'];
-    this.keywords = this.options.keywords;
   }
 
   // возвращает список новостей на основе запроса.
-  getNews() {
-    return fetch(`http://newsapi.org/v2/everything?q=${this.keywords}&from=2020-09-01&to=2020-09-03&language=ru&pageSize=100`, {
+  getNews(keywords) {
+    return fetch(`https://nomoreparties.co/news/v2/everything?q=${keywords}&from=2020-09-01&to=2020-09-03&language=ru&pageSize=100&apiKey=${this.key}`, {
       method: 'GET',
       headers: {
-        authorization: this.authorization,
+        'Content-Type': this.contentType,
       }
     })
       .then(res => {
-        if (res.ok) res.json();
+        if (res.ok) {
+          return res.json();
+        }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
       .then(data => {
-        return data;
+        return data.articles;
       })
       .catch(err => {
         console.log(err);

@@ -1,16 +1,17 @@
 import BaseComponent from "./BaseComponent";
 
 export default class Form extends BaseComponent {
-  constructor(form) {
+  constructor(form, buttonActiveClass) {
     super();
     this.form = form;
+    this.buttonActiveClass = buttonActiveClass;
     // this.elements = this.form.elements;
     this.submitButton = this.form.elements['submit'];
     this.options = [];
   }
 
-  setServerError() {
-
+  setServerError(error) {
+    document.querySelector(`#error-server`).textContent = error;
   }
 
   _validateInputFilled(value) {
@@ -43,12 +44,12 @@ export default class Form extends BaseComponent {
 
   _setButtonStateInactive() {
     this.submitButton.setAttribute('disabled', true);
-    this.submitButton.classList.remove(`popup__button_active`);
+    this.submitButton.classList.remove(this.buttonActiveClass);
   }
 
   _setButtonStateActive() {
     this.submitButton.removeAttribute('disabled');
-    this.submitButton.classList.add(`popup__button_active`);
+    this.submitButton.classList.add(this.buttonActiveClass);
   }
 
   _validateForm() {
@@ -66,6 +67,7 @@ export default class Form extends BaseComponent {
 
   setListeners(apiSubmit) {
     this.elements = Array.from(this.form.elements).filter(elem => elem.nodeName === 'INPUT');
+    this.api = apiSubmit;
 
     this.elements.forEach(elem => {
         this._setListeners([
@@ -80,18 +82,25 @@ export default class Form extends BaseComponent {
       {
         elem: this.form,
         event: 'submit',
-        callback: (e) => {
-          e.preventDefault();
-          this._getInfo();
-          apiSubmit([...this.options]);
-        }
+        callback: this._handleSubmitListener.bind(this),
       }
     ])
   }
 
+  _handleSubmitListener = (e) => {
+    e.preventDefault();
+    this._getInfo();
+    this.api(...this.options)
+      .then(err => {
+        this.setServerError(err);
+        this.options.splice(0);
+        this._clear();
+      });
+  }
+
   // вспомогательный метод, очищает поля формы;
   _clear() {
-
+    this.elements.forEach(elem => elem.value ='');
   }
 
   // вспомогательный метод, возвращает данные формы

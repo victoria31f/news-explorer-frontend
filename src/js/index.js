@@ -14,16 +14,16 @@ import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
 import Form from "./components/Form";
 import MainApi from "./api/MainApi";
+import SearchForm from "./components/SearchForm";
 
 const loginButton = document.querySelector('.button-login');
 // const loginFormElem = document.forms['login'];
 // const signupFormElem = document.forms['signup'];
 
 const newsApi = new NewsApi({
+  apiKey: 'c6e72a1aa4164fd0b73957a7b88b309f',
   headers: {
-    authorization: 'c6e72a1aa4164fd0b73957a7b88b309f',
     'Content-Type': 'application/json',
-    keywords: '',
   }
 })
 
@@ -36,15 +36,18 @@ const mainApi = new MainApi({
 
 const signupPopup = () => {
   new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup).open();
-  new Form(document.forms['signup']).setListeners(mainApi.signup);
+  new Form(document.forms['signup'], 'popup__button_active').setListeners(mainApi.signup.bind(mainApi));
 }
 
 const loginPopup = () => {
   new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup).open();
-  new Form(document.forms['login']).setListeners(mainApi.signin);
+  new Form(document.forms['login'], 'popup__button_active').setListeners(mainApi.signin.bind(mainApi));
 }
 
 loginButton.addEventListener('click', loginPopup);
+
+new SearchForm(document.forms['search'], 'search-bar__button_active').setEventListeners(newsApi.getNews.bind(newsApi));
+
 
 
 //

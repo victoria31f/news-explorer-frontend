@@ -1,3 +1,5 @@
+@import "./_bottom/popup__error_bottom.css";
+
 .popup__error {
   font-family: Inter, sans-serif;
   font-size: 12px;

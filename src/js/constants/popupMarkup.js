@@ -19,6 +19,8 @@ const loginPopupTemplate = `
                class="popup__input popup__input_type_password" placeholder="Введите пароль">
         <span class="popup__error" id="error-password"></span>
 
+        <span class="popup__error popup__error_bottom" id="error-server"></span>
+
         <button type="submit"
                 name="submit"
                 class="popup__button"
@@ -47,6 +49,8 @@ const signupPopupTemplate = `
         <input type="text" name="name" id="name" required minlength="2" maxlength="30"
                class="popup__input popup__input_type_name" placeholder="Введите своё имя">
         <span class="popup__error" id="error-name"></span>
+
+        <span class="popup__error popup__error_bottom" id="error-server"></span>
 
         <button type="submit"
                 name="submit"
