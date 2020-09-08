@@ -9,12 +9,15 @@ import {
     closeField,
     signupButton
 } from './constants/popupMarkup';
+import { CARDS_CONTAINER, SHOW_MORE_BUTTON} from "./constants/cards";
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
 import Form from "./components/Form";
 import MainApi from "./api/MainApi";
 import SearchForm from "./components/SearchForm";
+import NewsCard from "./components/NewsCard";
+import NewsCardList from "./components/NewsCardList";
 
 const loginButton = document.querySelector('.button-login');
 // const loginFormElem = document.forms['login'];
@@ -22,6 +25,12 @@ const loginButton = document.querySelector('.button-login');
 
 const newsApi = new NewsApi({
   apiKey: 'c6e72a1aa4164fd0b73957a7b88b309f',
+  dateTo: new Date().toISOString().split('T')[0],
+  dateFrom: () => {
+    let d = new Date();
+    d.setDate(d.getDate() - 7);
+    return d.toISOString().split('T')[0];
+  },
   headers: {
     'Content-Type': 'application/json',
   }
@@ -46,7 +55,13 @@ const loginPopup = () => {
 
 loginButton.addEventListener('click', loginPopup);
 
-new SearchForm(document.forms['search'], 'search-bar__button_active').setEventListeners(newsApi.getNews.bind(newsApi));
+const newCard = new NewsCard();
+const cardList = new NewsCardList(CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON);
+
+new SearchForm(document.forms['search'], 'search-bar__button_active').setEventListeners(
+  newsApi.getNews.bind(newsApi),
+  cardList.renderResults.bind(cardList)
+);
 
 
 
