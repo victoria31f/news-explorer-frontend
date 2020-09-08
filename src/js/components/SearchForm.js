@@ -6,9 +6,10 @@ export default class SearchForm extends Form {
 
   }
 
-  setEventListeners(apiSubmit) {
+  setEventListeners(getCardsApi, renderCardsApi) {
     this.elements = Array.from(this.form.elements).filter(elem => elem.nodeName === 'INPUT');
-    this.api = apiSubmit;
+    this.getCards = getCardsApi;
+    this.renderCards = renderCardsApi;
     this._setListeners([
       {
         elem: this.form,
@@ -23,9 +24,14 @@ export default class SearchForm extends Form {
     console.log('submit');
     if (this._validateInput()) {
       this._getInfo();
-      this.api(this.options.join())
+      this.getCards(this.options.join())
         .then(data => {
           console.log(data);
+          if (!data.articles) {
+            return console.log(data);
+          }
+          console.log(data.articles);
+          this.renderCards(data.articles);
         });
       this.options.splice(0);
       this._clear();

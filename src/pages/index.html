@@ -64,7 +64,7 @@
 
     <div class="results__container">
       <h2 class="section-title results__title">Результаты поиска</h2>
-      <div class="grid">
+      <div class="grid" id="cards-container">
         <div class="grid__item card">
           <picture class="grid__image">
             <source media="(max-width:767px)" srcset="<%=require('../images/results/1_mobile.jpg').default%>">
@@ -157,7 +157,7 @@
           </div>
         </div>
       </div>
-      <button class="more-button results__button">Показать ещё</button>
+      <button class="more-button results__button" id="show-more">Показать ещё</button>
     </div>
 
     <div class="results__waiting preloader-block hidden">
