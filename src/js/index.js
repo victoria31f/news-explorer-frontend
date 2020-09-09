@@ -2,7 +2,7 @@ import '../css/main.css';
 import {
     loginPopupTemplate,
     signupPopupTemplate,
-    successPopupTemplate,
+    SUCCESS_POPUP,
     popupContainer,
     closePopupButton,
     popup,
@@ -43,14 +43,43 @@ const mainApi = new MainApi({
   }
 });
 
-const signupPopup = () => {
-  new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup).open();
-  new Form(document.forms['signup'], 'popup__button_active').setListeners(mainApi.signup.bind(mainApi));
+const successPopup = () => {
+  new Popup(popup, popupContainer, SUCCESS_POPUP, closePopupButton, closeField, loginPopup).open();
 }
 
+const signupPopup = () => {
+  const popupSignup = new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup);
+  popupSignup.open();
+  const signupForm = new Form(document.forms['signup'], 'popup__button_active');
+  signupForm.setListeners(() => {
+    mainApi.signup(...signupForm.getInfo())
+      .then(data => {
+        if(data.data) {
+          popupSignup.close();
+          successPopup();
+          return console.log('Signed up', data);
+        }
+        signupForm.setServerError(data);
+      })
+  });
+}
+
+
 const loginPopup = () => {
-  new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup).open();
-  new Form(document.forms['login'], 'popup__button_active').setListeners(mainApi.signin.bind(mainApi));
+  const popupLogin = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup);
+  popupLogin.open();
+  // new Form(document.forms['login'], 'popup__button_active').setListeners(mainApi.signin.bind(mainApi));
+  const loginForm = new Form(document.forms['login'], 'popup__button_active');
+  loginForm.setListeners(() => {
+    mainApi.signin(...loginForm.getInfo())
+      .then(data => {
+        if(data.data) {
+          popupLogin.close();
+          return console.log('Logged in', data);
+        }
+        loginForm.setServerError(data);
+      })
+  });
 }
 
 loginButton.addEventListener('click', loginPopup);

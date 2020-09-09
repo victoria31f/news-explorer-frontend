@@ -30,7 +30,7 @@ export default class Popup extends BaseComponent {
         event: 'click',
         callback: () => {
           console.log('click on close');
-          this._close();
+          this.close();
         },
       },
       {
@@ -38,7 +38,7 @@ export default class Popup extends BaseComponent {
         event: 'click',
         callback: () => {
           console.log('click on close field');
-          this._close();
+          this.close();
         },
       },
       {
@@ -46,14 +46,14 @@ export default class Popup extends BaseComponent {
         event: 'click',
         callback: () => {
           console.log('click on signup');
-          parent._close();
+          parent.close();
           this.popupInstance();
         },
       }
     ]);
   }
 
-  _close() {
+  close() {
     this._clearContent();
     this.popup.classList.remove('popup_is-opened');
     this._clearListeners();

@@ -11,7 +11,14 @@ export default class Form extends BaseComponent {
   }
 
   setServerError(error) {
-    document.querySelector(`#error-server`).textContent = error;
+    this.serverErr = document.querySelector(`#error-server`);
+    this.serverErr.textContent = error;
+  }
+
+  _removeServerError() {
+    if(this.serverErr) {
+      this.serverErr.textContent = '';
+    }
   }
 
   _validateInputFilled(value) {
@@ -65,9 +72,9 @@ export default class Form extends BaseComponent {
     }
   }
 
-  setListeners(apiSubmit) {
+  setListeners(callback) {
     this.elements = Array.from(this.form.elements).filter(elem => elem.nodeName === 'INPUT');
-    this.api = apiSubmit;
+    this.api = callback;
 
     this.elements.forEach(elem => {
         this._setListeners([
@@ -75,6 +82,11 @@ export default class Form extends BaseComponent {
             elem: elem,
             event: 'input',
             callback: this._validateForm.bind(this),
+          },
+          {
+            elem: elem,
+            event: 'focus',
+            callback: this._removeServerError.bind(this),
           }
         ])
       })
@@ -89,13 +101,17 @@ export default class Form extends BaseComponent {
 
   _handleSubmitListener = (e) => {
     e.preventDefault();
-    this._getInfo();
-    this.api(...this.options)
-      .then(err => {
-        this.setServerError(err);
-        this.options.splice(0);
-        this._clear();
-      });
+    // this._getInfo();
+    this.api();
+    // this.api(...this.options)
+    //   .then(data => {
+    //     if (data.data) {
+    //       return console.log('Success');
+    //     }
+    //     this._setServerError(data);
+    //   });
+    this._clear();
+    this.options.splice(0);
   }
 
   // вспомогательный метод, очищает поля формы;
@@ -104,8 +120,9 @@ export default class Form extends BaseComponent {
   }
 
   // вспомогательный метод, возвращает данные формы
-  _getInfo() {
+  getInfo() {
     this.elements.forEach(elem => this.options.push(elem.value));
+    return this.options;
   }
 
 

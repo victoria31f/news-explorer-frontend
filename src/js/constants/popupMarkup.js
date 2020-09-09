@@ -61,12 +61,12 @@ const signupPopupTemplate = `
     </div>
   `
 
-const successPopupTemplate = `
+const SUCCESS_POPUP = `
   <div class="field-not-clickable">
     <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
-    <span class="popup__text popup__text_big popup__text_blue popup__signin-button">Выполнить вход</span>
+    <span class="popup__text popup__text_big popup__text_blue popup__another-popup-button">Выполнить вход</span>
   </div>
 `
 
 
-export { loginPopupTemplate, signupPopupTemplate, successPopupTemplate, popupContainer, closePopupButton, popup, closeField, signupButton };
+export { loginPopupTemplate, signupPopupTemplate, SUCCESS_POPUP, popupContainer, closePopupButton, popup, closeField, signupButton };
