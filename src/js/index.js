@@ -10,6 +10,7 @@ import {
     signupButton
 } from './constants/popupMarkup';
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON} from "./constants/cards";
+import { HEADER_CONTAINER, HEADER_COLOR_DARK, HEADER_COLOR_LIGHT} from "./constants/header";
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
@@ -18,10 +19,34 @@ import MainApi from "./api/MainApi";
 import SearchForm from "./components/SearchForm";
 import NewsCard from "./components/NewsCard";
 import NewsCardList from "./components/NewsCardList";
+import Header from "./components/Header";
 
 const loginButton = document.querySelector('.button-login');
-// const loginFormElem = document.forms['login'];
-// const signupFormElem = document.forms['signup'];
+
+
+const mainApi = new MainApi({
+  baseUrl: 'https://api.explorerofnews.ga',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
+
+let username = '';
+const header = new Header({
+  container: HEADER_CONTAINER,
+  headerColor: HEADER_COLOR_LIGHT,
+  isLoggedIn: () => {
+    mainApi.getUserData()
+      .then(data => {
+        if (data.data) {
+          username = data.name;
+          return true;
+        }
+        return false;
+      })
+  },
+  userName: username,
+});
 
 const newsApi = new NewsApi({
   apiKey: 'c6e72a1aa4164fd0b73957a7b88b309f',
@@ -36,12 +61,7 @@ const newsApi = new NewsApi({
   }
 })
 
-const mainApi = new MainApi({
-  baseUrl: 'https://api.explorerofnews.ga',
-  headers: {
-    'Content-Type': 'application/json',
-  }
-});
+
 
 const successPopup = () => {
   new Popup(popup, popupContainer, SUCCESS_POPUP, closePopupButton, closeField, loginPopup).open();

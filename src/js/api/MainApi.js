@@ -49,7 +49,7 @@ export default class MainApi {
   }
 
   getUserData() {
-    fetch(`${this.url}/users/me`, {
+    return fetch(`${this.url}/users/me`, {
       method: 'GET',
       headers: {
         'Content-Type': this.contentType,
@@ -59,10 +59,7 @@ export default class MainApi {
         if (res.ok) {
           return res.json()
         }
-        return Promise.reject(`Ошибка: ${res.error}`)
-      })
-      .then(data => {
-        return data;
+        return res.json().then(response => Promise.reject(`Ошибка: ${response.message}`));
       })
       .catch(err => {
         console.log(err);
