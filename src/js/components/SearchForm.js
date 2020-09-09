@@ -23,7 +23,7 @@ export default class SearchForm extends Form {
     e.preventDefault();
     console.log('submit');
     if (this._validateInput()) {
-      this._getInfo();
+      this.getInfo();
       this.getCards(this.options.join())
         .then(data => {
           console.log(data);
