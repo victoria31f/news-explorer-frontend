@@ -10,7 +10,7 @@ import {
     signupButton
 } from './constants/popupMarkup';
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON} from "./constants/cards";
-import { HEADER_CONTAINER, HEADER_COLOR_DARK, HEADER_COLOR_LIGHT} from "./constants/header";
+import { HEADER_CONTAINER, HEADER_COLOR_BLACK, HEADER_COLOR_WHITE} from "./constants/header";
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
@@ -21,7 +21,6 @@ import NewsCard from "./components/NewsCard";
 import NewsCardList from "./components/NewsCardList";
 import Header from "./components/Header";
 
-const loginButton = document.querySelector('.button-login');
 
 
 const mainApi = new MainApi({
@@ -31,22 +30,6 @@ const mainApi = new MainApi({
   }
 });
 
-let username = '';
-const header = new Header({
-  container: HEADER_CONTAINER,
-  headerColor: HEADER_COLOR_LIGHT,
-  isLoggedIn: () => {
-    mainApi.getUserData()
-      .then(data => {
-        if (data.data) {
-          username = data.name;
-          return true;
-        }
-        return false;
-      })
-  },
-  userName: username,
-});
 
 const newsApi = new NewsApi({
   apiKey: 'c6e72a1aa4164fd0b73957a7b88b309f',
@@ -60,7 +43,6 @@ const newsApi = new NewsApi({
     'Content-Type': 'application/json',
   }
 })
-
 
 
 const successPopup = () => {
@@ -95,6 +77,7 @@ const loginPopup = () => {
       .then(data => {
         if(data.data) {
           popupLogin.close();
+          header.render(headerCallback);
           return console.log('Logged in', data);
         }
         loginForm.setServerError(data);
@@ -102,7 +85,30 @@ const loginPopup = () => {
   });
 }
 
-loginButton.addEventListener('click', loginPopup);
+const header = new Header({
+  container: HEADER_CONTAINER,
+  headerColor: HEADER_COLOR_WHITE,
+  loginCallback: loginPopup,
+});
+
+const headerCallback = () => {
+  mainApi.getUserData()
+    .then(data => {
+      if (data.data.name) {
+        const user = data.data;
+        header.renderLoggedIn(user.name);
+      } else {
+        header.renderLoggedOut();
+      }
+    })
+}
+
+header.render(headerCallback);
+
+
+// const loginButton = document.querySelector('.button-login');
+
+// loginButton.addEventListener('click', loginPopup);
 
 const newCard = new NewsCard();
 const cardList = new NewsCardList(CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON);

@@ -51,6 +51,7 @@ export default class MainApi {
   getUserData() {
     return fetch(`${this.url}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         'Content-Type': this.contentType,
       }
@@ -63,11 +64,12 @@ export default class MainApi {
       })
       .catch(err => {
         console.log(err);
+        return err;
       })
   }
 
   getArticles() {
-    fetch(`${this.url}/articles`, {
+    return fetch(`${this.url}/articles`, {
       method: 'GET',
       headers: {
         'Content-Type': this.contentType,
@@ -88,7 +90,7 @@ export default class MainApi {
   }
 
   createArticle(keyword, title, text, date, source, link, image) {
-    fetch(`${this.url}/articles`, {
+    return fetch(`${this.url}/articles`, {
       method: 'POST',
       headers: {
         'Content-Type': this.contentType,
@@ -110,7 +112,7 @@ export default class MainApi {
   }
 
   removeArticle(articleId) {
-    fetch(`${this.url}/articles/${articleId}`, {
+    return fetch(`${this.url}/articles/${articleId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': this.contentType,
