@@ -1,5 +1,8 @@
-export default class Header {
+import BaseComponent from "./BaseComponent";
+
+export default class Header extends BaseComponent {
   constructor(props) {
+    super();
     this.container = props.container;
     this.headerColor = props.headerColor;
     this.isLoggedIn = props.isLoggedIn;
@@ -7,7 +10,7 @@ export default class Header {
     this.loginCallback = props.loginCallback;
   }
 
-  renderLoggedIn(username) {
+  renderLoggedIn(username, logoutApi) {
     this.container.insertAdjacentHTML('beforeend', `
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
@@ -26,6 +29,13 @@ export default class Header {
           </div>
         </div>`
     )
+    this._setListeners([
+      {
+        elem: this.container.querySelector('.button-logout'),
+        event: 'click',
+        callback: logoutApi,
+      }
+    ])
   }
 
   renderLoggedOut() {

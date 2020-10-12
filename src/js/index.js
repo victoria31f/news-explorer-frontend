@@ -25,6 +25,7 @@ import Header from "./components/Header";
 
 const mainApi = new MainApi({
   baseUrl: 'https://api.explorerofnews.ga',
+  // baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   }
@@ -94,9 +95,12 @@ const header = new Header({
 const headerCallback = () => {
   mainApi.getUserData()
     .then(data => {
-      if (data.data.name) {
+      if (data.data) {
         const user = data.data;
-        header.renderLoggedIn(user.name);
+        header.renderLoggedIn(user.name, () => {
+          mainApi.logout();
+          header.render(headerCallback);
+        });
       } else {
         header.renderLoggedOut();
       }
@@ -146,35 +150,7 @@ new SearchForm(document.forms['search'], 'search-bar__button_active').setEventLi
 //   }
 // }
 //
-//
-// document.querySelector('.button-login').addEventListener('click', () => {
-//   // if (container.lastElementChild.className !== 'popup__close') {
-//   //   container.removeChild(container.lastElementChild);
-//   // }
-//   container.insertAdjacentHTML('beforeend', loginPopupTemplate);
-//   popup.classList.add('popup_is-opened');
-//   openCloseBurgerMenu();
-//
-//   document.querySelector('.popup__signup-button').addEventListener('click', () => {
-//     container.removeChild(container.lastElementChild);
-//     container.insertAdjacentHTML('beforeend', signupPopupTemplate);
-//     popup.classList.add('popup_is-opened');
-//
-//     document.querySelector('#signup-button').addEventListener('click', () => {
-//       container.removeChild(container.lastElementChild);
-//       container.insertAdjacentHTML('beforeend', successPopupTemplate);
-//       popup.classList.add('popup_is-opened');
-//     });
-//
-//     document.querySelector('.popup__signin-button').addEventListener('click', () => {
-//       container.removeChild(container.lastElementChild);
-//       container.insertAdjacentHTML('beforeend', loginPopupTemplate);
-//       popup.classList.add('popup_is-opened');
-//     });
-//   });
-// });
-//
-//
+
 //
 // burgerMenu.addEventListener('click', () => {
 //   openCloseBurgerMenu();
