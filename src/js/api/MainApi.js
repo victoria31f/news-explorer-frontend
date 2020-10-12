@@ -48,6 +48,23 @@ export default class MainApi {
       })
   }
 
+  logout() {
+    return fetch(`${this.url}/logout`, {
+      method: 'POST',
+      credentials: 'include',
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return res.json().then(response => Promise.reject(`Ошибка: ${response.message}`));
+      })
+      .catch(err => {
+        console.log(err);
+        return err;
+      })
+  }
+
   getUserData() {
     return fetch(`${this.url}/users/me`, {
       method: 'GET',
