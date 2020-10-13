@@ -9,6 +9,7 @@ import {
     closeField,
     signupButton
 } from './constants/popupMarkup';
+import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON} from "./constants/cards";
 import { HEADER_CONTAINER, HEADER_COLOR_BLACK, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID} from "./constants/header";
 
@@ -33,7 +34,8 @@ const mainApi = new MainApi({
 
 
 const newsApi = new NewsApi({
-  apiKey: 'c6e72a1aa4164fd0b73957a7b88b309f',
+  baseUrl: NEWSAPI_DOMAIN,
+  apiKey: API_KEY_NEWSAPI,
   dateTo: new Date().toISOString().split('T')[0],
   dateFrom: () => {
     let d = new Date();

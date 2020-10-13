@@ -14,7 +14,10 @@ export default class NewsCardList extends BaseComponent{
     }
     this.cards = [];
     cardsArray.forEach(elem => {
-      const card = this.createCard(elem.urlToImage, elem.publishedAt, elem.title, elem.description, elem.source.name, elem.url);
+      const date = new Date(elem.publishedAt);
+      const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+      const newDate = date.getDate() + ' ' + months[date.getMonth()] + ', ' + date.getFullYear();
+      const card = this.createCard(elem.urlToImage, newDate, elem.title, elem.description, elem.source.name, elem.url);
       this.cards.push(card);
     });
     console.log(this.cards);
