@@ -41,6 +41,15 @@ export default class SearchForm extends Form {
   _validateInput() {
       if(!this._validateInputFilled(this.elements[0].value)) {
         this.elements[0].value = 'Нужно ввести ключевое слово';
+        // this._setListeners([
+        //   {
+        //     elem: this.elements[0],
+        //     event: 'focus',
+        //     callback: () => {
+        //       this.elements[0].value = '';
+        //     }
+        //   }
+        // ])
         return false;
       }
       return true;
