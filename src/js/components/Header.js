@@ -5,9 +5,9 @@ export default class Header extends BaseComponent {
     super();
     this.container = props.container;
     this.headerColor = props.headerColor;
-    this.isLoggedIn = props.isLoggedIn;
-    this.userName = props.userName;
     this.loginCallback = props.loginCallback;
+    this.menuItemActive = props.menuItemActive;
+    this.currentPageItem = props.currentPageItem;
   }
 
   renderLoggedIn(username, logoutApi) {
@@ -18,8 +18,8 @@ export default class Header extends BaseComponent {
           <img src="../images/close_white.svg" alt="close icon" class="menu__close">
           <div class="header__dark-area">
             <nav class="menu">
-              <a href="./" class="menu__item link">Главная</a>
-              <a href="./articles.html" class="menu__item menu__item_active link">Сохранённые статьи</a>
+              <a href="./" id="homepage" class="menu__item link">Главная</a>
+              <a href="./articles.html" id="articles" class="menu__item link">Сохранённые статьи</a>
               <button class="menu__item button-logout">
                 <span class="button-logout__text">${username}</span>
                 <img src="../images/logout_${this.headerColor}.svg" alt="logout icon"
@@ -28,7 +28,8 @@ export default class Header extends BaseComponent {
             </nav>
           </div>
         </div>`
-    )
+    );
+    this.container.querySelector(`#${this.currentPageItem}`).classList.add(this.menuItemActive);
     this._setListeners([
       {
         elem: this.container.querySelector('.button-logout'),
@@ -46,7 +47,7 @@ export default class Header extends BaseComponent {
           <img src="../images/close.svg" alt="close icon" class="menu__close">
           <div class="header__dark-area">
             <nav class="menu">
-              <a href="./" class="menu__item menu__item_active link">Главная</a>
+              <a href="./" id="homepage" class="menu__item menu__item_active link">Главная</a>
               <button class="menu__item button-logout">
                 <span class="button-logout__text button-login">Авторизоваться</span>
               </button>

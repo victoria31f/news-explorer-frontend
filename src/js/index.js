@@ -10,7 +10,7 @@ import {
     signupButton
 } from './constants/popupMarkup';
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON} from "./constants/cards";
-import { HEADER_CONTAINER, HEADER_COLOR_BLACK, HEADER_COLOR_WHITE} from "./constants/header";
+import { HEADER_CONTAINER, HEADER_COLOR_BLACK, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID} from "./constants/header";
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
@@ -90,6 +90,8 @@ const header = new Header({
   container: HEADER_CONTAINER,
   headerColor: HEADER_COLOR_WHITE,
   loginCallback: loginPopup,
+  menuItemActive: HEADER_ITEM_ACTIVE_CLASS,
+  currentPageItem: HEADER_ITEM_HOMEPAGE_ID,
 });
 
 const headerCallback = () => {
