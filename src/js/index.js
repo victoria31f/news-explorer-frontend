@@ -10,7 +10,7 @@ import {
     signupButton
 } from './constants/popupMarkup';
 import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
-import { CARDS_CONTAINER, SHOW_MORE_BUTTON} from "./constants/cards";
+import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK } from "./constants/cards";
 import { HEADER_CONTAINER, HEADER_COLOR_BLACK, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID} from "./constants/header";
 
 import Popup from "./components/Popup";
@@ -119,7 +119,7 @@ header.render(headerCallback);
 // loginButton.addEventListener('click', loginPopup);
 
 const newCard = new NewsCard();
-const cardList = new NewsCardList(CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON);
+const cardList = new NewsCardList(CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON, CARDS_BLOCK, HIDDEN_ELEM_CLASS);
 
 new SearchForm(document.forms['search'], 'search-bar__button_active').setEventListeners(
   newsApi.getNews.bind(newsApi),

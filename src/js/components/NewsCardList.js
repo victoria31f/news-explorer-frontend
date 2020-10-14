@@ -1,11 +1,13 @@
 import BaseComponent from "./BaseComponent";
 
 export default class NewsCardList extends BaseComponent{
-  constructor(container, createCard, buttonShowMore) {
+  constructor(container, createCard, buttonShowMore, cardsBlockClass, hiddenElemClass) {
     super();
     this.container = container;
     this.createCard = createCard;
     this.button = buttonShowMore;
+    this.cardsBlock = cardsBlockClass;
+    this.hiddenElemClass = hiddenElemClass;
   }
 
   renderResults(cardsArray) {
@@ -21,11 +23,12 @@ export default class NewsCardList extends BaseComponent{
       this.cards.push(card);
     });
     console.log(this.cards);
+    document.querySelector(`.${this.cardsBlock}`).classList.remove(this.hiddenElemClass);
     this.addCard();
   }
 
-  renderLoader() {
-
+  renderLoader(loaderElem) {
+    document.querySelector(`.${loaderElem}`).classList.remove(this.hiddenElemClass);
   }
 
   renderError() {
