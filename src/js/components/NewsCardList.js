@@ -1,7 +1,7 @@
 import BaseComponent from "./BaseComponent";
 
 export default class NewsCardList extends BaseComponent{
-  constructor(container, createCard, buttonShowMore, cardsBlockClass, hiddenElemClass, loaderBlock, notFoundBlock) {
+  constructor(container, createCard, buttonShowMore, cardsBlockClass, hiddenElemClass, loaderBlock, notFoundBlock, loginPopup) {
     super();
     this.container = container;
     this.createCard = createCard;
@@ -10,6 +10,7 @@ export default class NewsCardList extends BaseComponent{
     this.hiddenElemClass = hiddenElemClass;
     this.loaderBlock = loaderBlock;
     this.notFoundBlock = notFoundBlock;
+    this.loginPopup =loginPopup;
   }
 
   removeAllCards() {
@@ -18,19 +19,54 @@ export default class NewsCardList extends BaseComponent{
     }
   }
 
-  renderResults(cardsArray) {
+  renderResults(keywords, cardsArray, loggedIn, saveArticle) {
+    this.container.removeEventListener('click', this._eventHandler);
     this.removeAllCards();
     this.cards = [];
     cardsArray.forEach(elem => {
       const newDate = this.convertDate(elem.publishedAt);
-      const card = this.createCard(elem.urlToImage, newDate, elem.title, elem.description, elem.source.name, elem.url);
+      const card = this.createCard(elem.urlToImage, newDate, elem.title, elem.description, elem.source.name, elem.url, loggedIn, saveArticle, keywords);
       this.cards.push(card);
     });
-    console.log(this.cards);
-    this.addCard();
+    this._addCard();
     this.removeLoader();
     document.querySelector(`.${this.cardsBlock}`).classList.remove(this.hiddenElemClass);
   }
+
+//   setListenersLoggedIn(saveArticle) {
+//     console.log('listneres if logged in set');
+//     this.container.addEventListener('click', function handlerIfLoggedIn (event) {
+//       if (event.target.classList.contains('button_bookmark')) {
+//         console.log(event.target);
+//         console.log(event.currentTarget);
+//
+//       }
+//       });
+//   }
+//
+//
+//   setListenersLoggedOut() {
+//     console.log('listneres set');
+//     this.container.addEventListener('click', this._eventHandler);
+//   }
+//
+//   _eventHandler = (event) => {
+//     console.log('in event handler');
+//     if (event.target.classList.contains('button_bookmark')) {
+//       console.log(event.target);
+//       console.log(event.currentTarget);
+//       this.loginButton = event.target.parentNode.querySelector('.card__button-login');
+//       this.loginButton.classList.remove(this.hiddenElemClass);
+//       this.loginButton.addEventListener('click', this._loginHandler);
+//     }
+//   }
+//
+//   _loginHandler = () => {
+//     this.loginPopup();
+//     this.loginButton.classList.add(this.hiddenElemClass);
+//     // this.container.removeEventListener('click', this._eventHandler);
+//     this.loginButton.removeEventListener('click', this._loginHandler);
+// }
 
   convertDate(givenDate) {
     const date = new Date(givenDate);
@@ -66,22 +102,22 @@ export default class NewsCardList extends BaseComponent{
 
   }
 
-  showMore() {
+  _showMore() {
     this.button.classList.add('more-button_visible');
     this._setListeners([
       {
         elem: this.button,
         event: 'click',
-        callback: this.addCard,
+        callback: this._addCard,
       }
     ])
   }
 
-  addCard = () => {
+  _addCard = () => {
     this.container.append(...this.cards.slice(0, 3));
     this.cards.splice(0, 3);
     if (6 < this.cards.length <= 99) {
-      this.showMore();
+      this._showMore();
     }
   }
 }

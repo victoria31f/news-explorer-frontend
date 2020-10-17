@@ -115,23 +115,18 @@ header.render(headerCallback);
 
 // loginButton.addEventListener('click', loginPopup);
 
-const newCard = new NewsCard();
-const cardList = new NewsCardList( CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON, CARDS_BLOCK, HIDDEN_ELEM_CLASS, LOADER_BLOCK, NOT_FOUND_BLOCK );
-
-// new SearchForm(document.forms['search'], 'search-bar__button_active').setEventListeners(
-//   newsApi.getNews.bind(newsApi),
-//   cardList.renderResults.bind(cardList),
-//   cardList.renderLoader.bind(cardList),
-// );
+const newCard = new NewsCard(loginPopup);
+const cardList = new NewsCardList( CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON, CARDS_BLOCK, HIDDEN_ELEM_CLASS, LOADER_BLOCK, NOT_FOUND_BLOCK, loginPopup );
 
 const searchForm = new SearchForm(document.forms['search'], 'search-bar__button_active');
 searchForm.setEventListeners((e) => {
   e.preventDefault();
   if (searchForm._validateInput()) {
     searchForm.getInfo();
+    const keywords = searchForm.options.join();
     // cardList.removeAllCards();
     cardList.renderLoader();
-    newsApi.getNews(searchForm.options.join())
+    newsApi.getNews(keywords)
       .then(data => {
         if (!data.articles) {
           return console.log(data);
@@ -140,8 +135,17 @@ searchForm.setEventListeners((e) => {
           cardList.renderNotFound();
           return;
         }
-        console.log(data.articles);
-        cardList.renderResults(data.articles);
+        const articles = data.articles;
+        mainApi.getUserData()
+          .then(data => {
+            if (data.data) {
+              cardList.renderResults(keywords, articles, true, mainApi.createArticle.bind(mainApi));
+              // newCard.setListenerLoggedOut();
+            } else {
+              cardList.renderResults(keywords, articles, false);
+              // newCard.setListenerLoggedOut();
+            }
+          });
       });
     searchForm.options.splice(0);
     searchForm._clear();

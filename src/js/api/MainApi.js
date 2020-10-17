@@ -88,6 +88,7 @@ export default class MainApi {
   getArticles() {
     return fetch(`${this.url}/articles`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         'Content-Type': this.contentType,
       }
@@ -109,6 +110,7 @@ export default class MainApi {
   createArticle(keyword, title, text, date, source, link, image) {
     return fetch(`${this.url}/articles`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': this.contentType,
       },
@@ -121,16 +123,18 @@ export default class MainApi {
         return Promise.reject(`Ошибка: ${res.error}`)
       })
       .then(data => {
-        return data;
+        return data.data;
       })
       .catch(err => {
         console.log(err);
+        return err;
       })
   }
 
   removeArticle(articleId) {
     return fetch(`${this.url}/articles/${articleId}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: {
         'Content-Type': this.contentType,
       },

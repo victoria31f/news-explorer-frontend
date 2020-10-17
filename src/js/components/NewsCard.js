@@ -1,11 +1,12 @@
 import BaseComponent from "./BaseComponent";
 
 export default class NewsCard extends BaseComponent {
-  constructor() {
+  constructor(loginPopup) {
     super();
+    this.loginPopup = loginPopup;
   }
 
-  renderIcon(image, date, title, text, source, link) {
+  renderIcon(image, date, title, text, source, link, loggedIn, saveArticle, keyword) {
     this.link = link;
     this.card = document.createElement('div');
     this.card.classList.add('grid__item','card');
@@ -15,6 +16,7 @@ export default class NewsCard extends BaseComponent {
             <img class="card__image" src="${image}" alt="flowers">
           </picture>
           <div class="card__btn-container">
+            <button class="button card__button-login hidden">Войдите, чтобы сохранять статьи</button>
             <button class="button button_square button_bookmark card__button"></button>
           </div>
           <div class="card__content">
@@ -24,11 +26,49 @@ export default class NewsCard extends BaseComponent {
             <p class="card__source">${source}</p>
           </div>`
     )
+
+    if(loggedIn) {
+      this.setListenerLoggedIn(saveArticle, keyword, title, text, date, source, link, image);
+    }
     // this._setListeners();
     return this.card;
   }
 
-  _save(event) {
+  setListenerLoggedOut() {
+    this.card.addEventListener('click', this._showLogin);
+  }
+
+  setListenerLoggedIn(saveArticle, keyword, title, text, date, source, link, image) {
+    this.card.addEventListener('click', function saveHandler(event) {
+      if (event.target.classList.contains('button_bookmark')) {
+        saveArticle(keyword, title, text, date, source, link, image)
+          .then(data => {
+            if(data.date) {
+              event.target.classList.add('button_bookmark-saved');
+            }
+          })
+      }
+    });
+
+  }
+
+  _showLogin = (event) => {
+    if (event.target.classList.contains('button_bookmark')) {
+      this.loginButton = event.target.parentNode.querySelector('.card__button-login');
+      this.loginButton.classList.remove('hidden');
+      this.loginButton.addEventListener('click', this._loginHandler);
+    }
+  }
+
+  _loginHandler = () => {
+    this.loginPopup();
+    this.loginButton.classList.add('hidden');
+    // this.container.removeEventListener('click', this._eventHandler);
+    this.loginButton.removeEventListener('click', this._loginHandler);
+  }
+
+
+  _save = (event) => {
     event.target.classList.toggle('button_bookmark-saved');
   }
 
