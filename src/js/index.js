@@ -12,6 +12,7 @@ import {
 import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK, LOADER_BLOCK, NOT_FOUND_BLOCK } from "./constants/cards";
 import { HEADER_CONTAINER, HEADER_COLOR_BLACK, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID} from "./constants/header";
+import { getTodayDate, getSevenDaysBackDate } from "./utils/utils";
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
@@ -36,12 +37,8 @@ const mainApi = new MainApi({
 const newsApi = new NewsApi({
   baseUrl: NEWSAPI_DOMAIN,
   apiKey: API_KEY_NEWSAPI,
-  dateTo: new Date().toISOString().split('T')[0],
-  dateFrom: () => {
-    let d = new Date();
-    d.setDate(d.getDate() - 7);
-    return d.toISOString().split('T')[0];
-  },
+  dateTo: getTodayDate(),
+  dateFrom: getSevenDaysBackDate(),
   headers: {
     'Content-Type': 'application/json',
   }
