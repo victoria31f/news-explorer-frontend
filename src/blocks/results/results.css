@@ -2,6 +2,7 @@
 @import "./__button/results__button.css";
 @import "./__waiting/results__waiting.css";
 @import "./__container/results__container.css";
+@import "./__not-found/results__not-found.css";
 
 .results {
   background-color: #F5F6F7;

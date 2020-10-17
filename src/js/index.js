@@ -10,7 +10,7 @@ import {
     signupButton
 } from './constants/popupMarkup';
 import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
-import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK } from "./constants/cards";
+import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK, LOADER_BLOCK, NOT_FOUND_BLOCK } from "./constants/cards";
 import { HEADER_CONTAINER, HEADER_COLOR_BLACK, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID} from "./constants/header";
 
 import Popup from "./components/Popup";
@@ -119,12 +119,39 @@ header.render(headerCallback);
 // loginButton.addEventListener('click', loginPopup);
 
 const newCard = new NewsCard();
-const cardList = new NewsCardList(CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON, CARDS_BLOCK, HIDDEN_ELEM_CLASS);
+const cardList = new NewsCardList( CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON, CARDS_BLOCK, HIDDEN_ELEM_CLASS, LOADER_BLOCK, NOT_FOUND_BLOCK );
 
-new SearchForm(document.forms['search'], 'search-bar__button_active').setEventListeners(
-  newsApi.getNews.bind(newsApi),
-  cardList.renderResults.bind(cardList)
-);
+// new SearchForm(document.forms['search'], 'search-bar__button_active').setEventListeners(
+//   newsApi.getNews.bind(newsApi),
+//   cardList.renderResults.bind(cardList),
+//   cardList.renderLoader.bind(cardList),
+// );
+
+const searchForm = new SearchForm(document.forms['search'], 'search-bar__button_active');
+searchForm.setEventListeners((e) => {
+  e.preventDefault();
+  if (searchForm._validateInput()) {
+    searchForm.getInfo();
+    // cardList.removeAllCards();
+    cardList.renderLoader();
+    newsApi.getNews(searchForm.options.join())
+      .then(data => {
+        if (!data.articles) {
+          return console.log(data);
+        }
+        if (data.articles.length === 0) {
+          cardList.renderNotFound();
+          return;
+        }
+        console.log(data.articles);
+        cardList.renderResults(data.articles);
+      });
+    searchForm.options.splice(0);
+    searchForm._clear();
+
+  }
+
+});
 
 
 

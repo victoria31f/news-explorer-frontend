@@ -6,37 +6,34 @@ export default class SearchForm extends Form {
 
   }
 
-  setEventListeners(getCardsApi, renderCardsApi) {
+  setEventListeners(callback) {
     this.elements = Array.from(this.form.elements).filter(elem => elem.nodeName === 'INPUT');
-    this.getCards = getCardsApi;
-    this.renderCards = renderCardsApi;
     this._setListeners([
       {
         elem: this.form,
         event: 'submit',
-        callback: this._handleListener.bind(this),
+        callback: callback,
       }
     ])
   }
 
-  _handleListener = (e) => {
-    e.preventDefault();
-    console.log('submit');
-    if (this._validateInput()) {
-      this.getInfo();
-      this.getCards(this.options.join())
-        .then(data => {
-          console.log(data);
-          if (!data.articles) {
-            return console.log(data);
-          }
-          console.log(data.articles);
-          this.renderCards(data.articles);
-        });
-      this.options.splice(0);
-      this._clear();
-    }
-  }
+  // _handleListener = (e) => {
+  //   e.preventDefault();
+  //   if (this._validateInput()) {
+  //     this.getInfo();
+  //     // this.renderLoader();
+  //     this.getCards(this.options.join())
+  //       .then(data => {
+  //         if (!data.articles) {
+  //           return console.log(data);
+  //         }
+  //         this.renderCards(data.articles);
+  //       });
+  //     // this.renderLoader();
+  //     this.options.splice(0);
+  //     this._clear();
+  //   }
+  // }
 
   _validateInput() {
       if(!this._validateInputFilled(this.elements[0].value)) {
