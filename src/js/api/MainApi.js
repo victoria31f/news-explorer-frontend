@@ -100,7 +100,7 @@ export default class MainApi {
         return Promise.reject(`Ошибка: ${res.error}`)
       })
       .then(data => {
-        return data;
+        return data.data;
       })
       .catch(err => {
         console.log(err);
