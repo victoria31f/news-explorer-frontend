@@ -17,10 +17,10 @@ export default class Header extends BaseComponent {
           <img src="../images/burger_black.svg" alt="menu icon" class="header__burger">
           <img src="../images/close_white.svg" alt="close icon" class="menu__close">
           <div class="header__dark-area">
-            <nav class="menu">
-              <a href="./" id="homepage" class="menu__item link">Главная</a>
-              <a href="./articles.html" id="articles" class="menu__item link">Сохранённые статьи</a>
-              <button class="menu__item button-logout">
+            <nav class="menu menu_${this.headerColor}">
+              <a href="./" id="homepage" class="menu__item menu__item_${this.headerColor} link">Главная</a>
+              <a href="./articles.html" id="articles" class="menu__item menu__item_${this.headerColor} link">Сохранённые статьи</a>
+              <button class="menu__item menu__item_${this.headerColor} button-logout">
                 <span class="button-logout__text">${username}</span>
                 <img src="../images/logout_${this.headerColor}.svg" alt="logout icon"
                      class="menu__icon button-logout__image">
@@ -30,13 +30,20 @@ export default class Header extends BaseComponent {
         </div>`
     );
     this.container.querySelector(`#${this.currentPageItem}`).classList.add(this.menuItemActive);
-    this._setListeners([
-      {
-        elem: this.container.querySelector('.button-logout'),
-        event: 'click',
-        callback: logoutApi,
-      }
-    ])
+    // this._setListeners([
+    //   {
+    //     elem: this.container.querySelector('.button-logout'),
+    //     event: 'click',
+    //     callback: logoutApi,
+    //   }
+    // ])
+    this.setListenerLogout(logoutApi);
+  }
+
+  setListenerLogout(logoutApi) {
+    this.container.querySelector('.button-logout').addEventListener('click', () => {
+      logoutApi();
+    })
   }
 
   renderLoggedOut() {
@@ -59,7 +66,7 @@ export default class Header extends BaseComponent {
   }
 
   render(callback) {
-    this.container.removeChild(this.container.lastChild);
+    this.container.removeChild(this.container.lastElementChild);
     this.container.classList.add(`header_${this.headerColor}`);
     callback();
   }
