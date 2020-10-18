@@ -78,6 +78,7 @@ const loginPopup = () => {
         if(data.data) {
           popupLogin.close();
           header.render(headerCallback);
+          cardList.removeCardsBlock();
           return console.log('Logged in', data);
         }
         loginForm.setServerError(data);
@@ -99,8 +100,11 @@ const headerCallback = () => {
       if (data.data) {
         const user = data.data;
         header.renderLoggedIn(user.name, () => {
-          mainApi.logout();
-          header.render(headerCallback);
+          mainApi.logout()
+            .then(() => {
+              cardList.removeCardsBlock();
+              header.render(headerCallback);
+            })
         });
       } else {
         header.renderLoggedOut();

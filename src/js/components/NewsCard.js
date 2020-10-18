@@ -29,8 +29,10 @@ export default class NewsCard extends BaseComponent {
 
     if(loggedIn) {
       this.setListenerLoggedIn(saveArticle, keyword, title, text, date, source, link, image);
+    } else {
+      this.setListenerLoggedOut();
     }
-    // this._setListeners();
+
     return this.card;
   }
 
