@@ -1,11 +1,13 @@
 import '../css/articles.css';
 
 import {
-  HEADER_CONTAINER,
   HEADER_COLOR_BLACK,
+  HEADER_CONTAINER,
   HEADER_ITEM_ACTIVE_CLASS,
   HEADER_ITEM_ARTICLES_ID
 } from "./constants/header";
+
+import {INFO_CONTAINER} from "./constants/articles";
 
 import Header from "./components/Header";
 import MainApi from "./api/MainApi";
@@ -25,8 +27,27 @@ const header = new Header({
   currentPageItem: HEADER_ITEM_ARTICLES_ID,
 });
 
-const info = new Info({});
+const info = new Info({
+  container: INFO_CONTAINER,
+});
 
+const getKeywordsFromArticles = (articles) => {
+  let allKeywords = articles.map((item) => {
+    return item.keyword;
+  });
+  let countedKeywords = allKeywords.reduce((allKeys, keyword) => {
+    if (keyword in allKeys) {
+      allKeys[keyword]++
+    }
+    else {
+      allKeys[keyword] = 1
+    }
+    return allKeys;
+  }, {});
+  return Object.keys(countedKeywords).sort((a, b) => {
+    return countedKeywords[b] - countedKeywords[a];
+  });
+}
 
 const headerCallback = () => {
   mainApi.getUserData()
@@ -39,6 +60,11 @@ const headerCallback = () => {
               window.location.replace('./index.html');
             })
         });
+        mainApi.getArticles()
+          .then(data => {
+            const keywords = getKeywordsFromArticles(data);
+            info.renderInfo(user.name, data.length, keywords);
+          })
       } else {
         window.location.replace('./index.html');
       }
@@ -46,6 +72,7 @@ const headerCallback = () => {
 }
 
 header.render(headerCallback);
+
 
 // header.setListenerLogout(() => {
 //   mainApi.logout()
