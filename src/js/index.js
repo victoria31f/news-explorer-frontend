@@ -120,7 +120,16 @@ header.render(headerCallback);
 // loginButton.addEventListener('click', loginPopup);
 
 const newCard = new NewsCard(loginPopup);
-const cardList = new NewsCardList( CARDS_CONTAINER, newCard.renderIcon.bind(newCard), SHOW_MORE_BUTTON, CARDS_BLOCK, HIDDEN_ELEM_CLASS, LOADER_BLOCK, NOT_FOUND_BLOCK, loginPopup );
+const cardList = new NewsCardList({
+  container: CARDS_CONTAINER,
+  createCard: newCard.renderIcon.bind(newCard),
+  buttonShowMore: SHOW_MORE_BUTTON,
+  cardsBlockClass: CARDS_BLOCK,
+  hiddenElemClass: HIDDEN_ELEM_CLASS,
+  loaderBlock: LOADER_BLOCK,
+  notFoundBlock: NOT_FOUND_BLOCK,
+  loginPopupCallback: loginPopup,
+})
 
 const searchForm = new SearchForm(document.forms['search'], 'search-bar__button_active');
 searchForm.setEventListeners((e) => {

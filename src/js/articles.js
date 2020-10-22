@@ -12,6 +12,7 @@ import {INFO_CONTAINER} from "./constants/articles";
 import Header from "./components/Header";
 import MainApi from "./api/MainApi";
 import Info from "./components/Info";
+import NewsCardList from "./components/NewsCardList";
 
 const mainApi = new MainApi({
   baseUrl: 'https://api.explorerofnews.ga',
@@ -30,6 +31,8 @@ const header = new Header({
 const info = new Info({
   container: INFO_CONTAINER,
 });
+
+// const cardList = new NewsCardList();
 
 const getKeywordsFromArticles = (articles) => {
   let allKeywords = articles.map((item) => {
@@ -64,6 +67,7 @@ const headerCallback = () => {
           .then(data => {
             const keywords = getKeywordsFromArticles(data);
             info.renderInfo(user.name, data.length, keywords);
+
           })
       } else {
         window.location.replace('./index.html');

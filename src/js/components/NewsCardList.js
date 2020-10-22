@@ -1,16 +1,16 @@
 import BaseComponent from "./BaseComponent";
 
 export default class NewsCardList extends BaseComponent{
-  constructor(container, createCard, buttonShowMore, cardsBlockClass, hiddenElemClass, loaderBlock, notFoundBlock, loginPopup) {
+  constructor(props) {
     super();
-    this.container = container;
-    this.createCard = createCard;
-    this.button = buttonShowMore;
-    this.cardsBlock = cardsBlockClass;
-    this.hiddenElemClass = hiddenElemClass;
-    this.loaderBlock = loaderBlock;
-    this.notFoundBlock = notFoundBlock;
-    this.loginPopup =loginPopup;
+    this.container = props.container;
+    this.createCard = props.createCard;
+    this.button = props.buttonShowMore;
+    this.cardsBlock = props.cardsBlockClass;
+    this.hiddenElemClass = props.hiddenElemClass;
+    this.loaderBlock = props.loaderBlock;
+    this.notFoundBlock = props.notFoundBlock;
+    this.loginPopup = props.loginPopupCallback;
   }
 
   removeAllCards() {
@@ -31,6 +31,16 @@ export default class NewsCardList extends BaseComponent{
     this._addCard();
     this.removeLoader();
     document.querySelector(`.${this.cardsBlock}`).classList.remove(this.hiddenElemClass);
+  }
+
+  renderSavedCards(cardsArray) {
+    this.removeAllCards();
+    this.cards = [];
+    cardsArray.forEach(elem => {
+      const card = this.createCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link);
+      this.cards.push(card);
+    })
+    this._addCard();
   }
 
 //   setListenersLoggedIn(saveArticle) {
