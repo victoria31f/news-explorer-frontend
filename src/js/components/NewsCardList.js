@@ -33,11 +33,11 @@ export default class NewsCardList extends BaseComponent{
     document.querySelector(`.${this.cardsBlock}`).classList.remove(this.hiddenElemClass);
   }
 
-  renderSavedCards(cardsArray) {
+  renderSavedCards(cardsArray, loggedIn) {
     this.removeAllCards();
     this.cards = [];
     cardsArray.forEach(elem => {
-      const card = this.createCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link);
+      const card = this.createCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link, loggedIn);
       this.cards.push(card);
     })
     this._addCard();

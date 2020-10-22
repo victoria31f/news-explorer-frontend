@@ -6,13 +6,15 @@ import {
   HEADER_ITEM_ACTIVE_CLASS,
   HEADER_ITEM_ARTICLES_ID
 } from "./constants/header";
-
 import {INFO_CONTAINER} from "./constants/articles";
+import {CARDS_BLOCK, CARDS_CONTAINER, HIDDEN_ELEM_CLASS, SHOW_MORE_BUTTON} from "./constants/cards";
 
 import Header from "./components/Header";
 import MainApi from "./api/MainApi";
 import Info from "./components/Info";
 import NewsCardList from "./components/NewsCardList";
+import NewsCard from "./components/NewsCard";
+
 
 const mainApi = new MainApi({
   baseUrl: 'https://api.explorerofnews.ga',
@@ -32,7 +34,15 @@ const info = new Info({
   container: INFO_CONTAINER,
 });
 
-// const cardList = new NewsCardList();
+const newCard = new NewsCard();
+
+const cardList = new NewsCardList({
+  container: CARDS_CONTAINER,
+  createCard: newCard.renderIcon.bind(newCard),
+  buttonShowMore: SHOW_MORE_BUTTON,
+  cardsBlockClass: CARDS_BLOCK,
+  hiddenElemClass: HIDDEN_ELEM_CLASS,
+});
 
 const getKeywordsFromArticles = (articles) => {
   let allKeywords = articles.map((item) => {
@@ -67,7 +77,7 @@ const headerCallback = () => {
           .then(data => {
             const keywords = getKeywordsFromArticles(data);
             info.renderInfo(user.name, data.length, keywords);
-
+            cardList.renderSavedCards(data, true);
           })
       } else {
         window.location.replace('./index.html');

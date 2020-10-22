@@ -14,20 +14,20 @@
 
 <header class="header header_black">
   <div class="header__container">
-    <a href="./" class="logo logo_black header__logo link">NewsExplorer</a>
-    <img src="<%=require('../images/header/burger_black.svg').default%>" alt="menu icon" class="header__burger">
-    <img src="<%=require('../images/close_white.svg').default%>" alt="close icon" class="menu__close">
-    <div class="header__dark-area">
-      <nav class="menu">
-        <a href="./" class="menu__item menu__item_black link">Главная</a>
-        <a href="./articles.html" class="menu__item menu__item_black menu__item_active link">Сохранённые статьи</a>
-        <button class="menu__item menu__item_black button-logout">
-          <span class="button-logout__text">Грета</span>
-          <img src="<%=require('../images/header/logout_black.svg').default%>" alt="logout icon"
-               class="menu__icon button-logout__image">
-        </button>
-      </nav>
-    </div>
+<!--    <a href="./" class="logo logo_black header__logo link">NewsExplorer</a>-->
+<!--    <img src="<%=require('../images/header/burger_black.svg').default%>" alt="menu icon" class="header__burger">-->
+<!--    <img src="<%=require('../images/close_white.svg').default%>" alt="close icon" class="menu__close">-->
+<!--    <div class="header__dark-area">-->
+<!--      <nav class="menu">-->
+<!--        <a href="./" class="menu__item menu__item_black link">Главная</a>-->
+<!--        <a href="./articles.html" class="menu__item menu__item_black menu__item_active link">Сохранённые статьи</a>-->
+<!--        <button class="menu__item menu__item_black button-logout">-->
+<!--          <span class="button-logout__text">Грета</span>-->
+<!--          <img src="<%=require('../images/header/logout_black.svg').default%>" alt="logout icon"-->
+<!--               class="menu__icon button-logout__image">-->
+<!--        </button>-->
+<!--      </nav>-->
+<!--    </div>-->
   </div>
 </header>
 
@@ -45,7 +45,7 @@
 
   <section class="articles">
     <div class="articles__container">
-      <div class="grid">
+      <div class="grid" id="cards-container">
         <div class="grid__item card">
           <picture class="grid__image">
             <source media="(max-width:767px)" srcset="<%=require('../images/results/1_mobile.jpg').default%>">
@@ -128,6 +128,7 @@
           </div>
         </div>
       </div>
+      <button class="more-button articles__button" id="show-more">Показать ещё</button>
     </div>
   </section>
 
