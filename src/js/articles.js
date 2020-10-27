@@ -6,8 +6,9 @@ import {
   HEADER_ITEM_ACTIVE_CLASS,
   HEADER_ITEM_ARTICLES_ID
 } from "./constants/header";
-import {INFO_CONTAINER} from "./constants/articles";
-import {CARDS_BLOCK, CARDS_CONTAINER, HIDDEN_ELEM_CLASS, SHOW_MORE_BUTTON} from "./constants/cards";
+import { INFO_CONTAINER } from "./constants/articles";
+import { CARDS_BLOCK, CARDS_CONTAINER, HIDDEN_ELEM_CLASS, SHOW_MORE_BUTTON } from "./constants/cards";
+import { convertDate } from "./utils/utils";
 
 import Header from "./components/Header";
 import MainApi from "./api/MainApi";
@@ -67,6 +68,7 @@ const headerCallback = () => {
     .then(data => {
       if (data.data) {
         const user = data.data;
+        const loggedIn = true;
         header.renderLoggedIn(user.name, () => {
           mainApi.logout()
             .then(() => {
@@ -77,7 +79,15 @@ const headerCallback = () => {
           .then(data => {
             const keywords = getKeywordsFromArticles(data);
             info.renderInfo(user.name, data.length, keywords);
-            cardList.renderSavedCards(data, true, mainApi.removeArticle.bind(mainApi));
+            // cardList.renderSavedCards(data, true, mainApi.removeArticle.bind(mainApi));
+            cardList.renderCards(() => {
+              const cards = [];
+              data.forEach(elem => {
+                const card = new NewsCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link, loggedIn, mainApi.removeArticle.bind(mainApi), elem.keyword, elem._id).renderIcon();
+                cards.push(card);
+              })
+              return cards;
+            })
           })
       } else {
         window.location.replace('./index.html');

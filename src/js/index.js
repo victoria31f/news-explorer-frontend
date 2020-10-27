@@ -12,7 +12,7 @@ import {
 import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK, LOADER_BLOCK, NOT_FOUND_BLOCK } from "./constants/cards";
 import { HEADER_CONTAINER, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID} from "./constants/header";
-import { getTodayDate, getSevenDaysBackDate } from "./utils/utils";
+import { getTodayDate, getSevenDaysBackDate, convertDate } from "./utils/utils";
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
@@ -152,10 +152,21 @@ searchForm.setEventListeners((e) => {
         mainApi.getUserData()
           .then(data => {
             if (data.data) {
-              cardList.renderResults(keywords, articles, true, mainApi.createArticle.bind(mainApi));
+              const loggedIn = true;
+              // cardList.renderResults(keywords, articles, true, mainApi.createArticle.bind(mainApi));
+              cardList.renderCards(() => {
+                const cards = [];
+                articles.forEach(elem => {
+                  const card = new NewsCard(elem.urlToImage, convertDate(elem.publishedAt), elem.title, elem.description, elem.source.name, elem.url, loggedIn, mainApi.createArticle.bind(mainApi), keywords).renderIcon();
+                  cards.push(card);
+                })
+                return cards;
+              })
+
               // newCard.setListenerLoggedOut();
             } else {
-              cardList.renderResults(keywords, articles, false);
+              const loggedIn = false;
+              cardList.renderResults(keywords, articles, loggedIn);
               // newCard.setListenerLoggedOut();
             }
           });

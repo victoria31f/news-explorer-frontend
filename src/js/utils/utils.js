@@ -8,4 +8,11 @@ const getSevenDaysBackDate = () => {
   return d.toISOString().split('T')[0];
 }
 
-export { getTodayDate, getSevenDaysBackDate };
+const convertDate = (givenDate) => {
+  const date = new Date(givenDate);
+  const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+  return date.getDate() + ' ' + months[date.getMonth()] + ', ' + date.getFullYear();
+}
+
+
+export { getTodayDate, getSevenDaysBackDate, convertDate };

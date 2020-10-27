@@ -1,56 +1,63 @@
 import BaseComponent from "./BaseComponent";
 
 export default class NewsCard extends BaseComponent {
-  constructor(loginPopup) {
+  constructor(image, date, title, text, source, link, loggedIn, saveOrDeleteArticleCallback, keyword, id, loginPopup) {
     super();
     this.loginPopup = loginPopup;
+    this.link = link;
+    this.id = id;
+    this.image = image;
+    this.saveOrDeleteCallback = saveOrDeleteArticleCallback;
+    this.date = date;
+    this.title = title;
+    this.text = text;
+    this.source = source;
+    this.loggedIn = loggedIn;
+    this.keyword = keyword;
   }
 
-  renderIcon(image, date, title, text, source, link, loggedIn, saveOrDeleteArticleCallback, keyword, id) {
-    this.link = link;
+  renderIcon() {
     this.card = document.createElement('div');
     this.card.classList.add('grid__item','card');
-    this.saveOrDeleteCallback = saveOrDeleteArticleCallback;
-    this.id = id;
     if(window.location.pathname === '/articles.html') {
       this.card.insertAdjacentHTML('beforeend', `
           <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="${image}">
-            <img class="card__image" src="${image}" alt="flowers">
+            <source media="(max-width:767px)" srcset="${this.image}">
+            <img class="card__image" src="${this.image}" alt="flowers">
           </picture>
-          <button class="button card__button-left">${keyword}</button>
+          <button class="button card__button-left">${this.keyword}</button>
           <div class="card__btn-container">
             <button class="button button_square button_bin card__button"></button>
           </div>
           <div class="card__content">
-            <p class="card__date">${date}</p>
-            <h3 class="card__title">${title}</h3>
-            <p class="card__text">${text}</p>
-            <p class="card__source">${source}</p>
+            <p class="card__date">${this.date}</p>
+            <h3 class="card__title">${this.title}</h3>
+            <p class="card__text">${this.text}</p>
+            <p class="card__source">${this.source}</p>
           </div>`
       );
       // this.card.addEventListener('click', this.binClickHandler.bind(this));
-      this.setListenerOnBin(saveOrDeleteArticleCallback, id);
+      this.setListenerOnBin(this.saveOrDeleteCallback, this.id);
     } else {
       this.card.insertAdjacentHTML('beforeend', `
           <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="${image}">
-            <img class="card__image" src="${image}" alt="flowers">
+            <source media="(max-width:767px)" srcset="${this.image}">
+            <img class="card__image" src="${this.image}" alt="flowers">
           </picture>
           <div class="card__btn-container">
             <button class="button card__button-login hidden">Войдите, чтобы сохранять статьи</button>
             <button class="button button_square button_bookmark card__button"></button>
           </div>
           <div class="card__content">
-            <p class="card__date">${date}</p>
-            <h3 class="card__title">${title}</h3>
-            <p class="card__text">${text}</p>
-            <p class="card__source">${source}</p>
+            <p class="card__date">${this.date}</p>
+            <h3 class="card__title">${this.title}</h3>
+            <p class="card__text">${this.text}</p>
+            <p class="card__source">${this.source}</p>
           </div>`
       );
 
-      if(loggedIn) {
-        this.setListenerOnBookmarkLoggedIn(saveOrDeleteArticleCallback, keyword, title, text, date, source, link, image);
+      if(this.loggedIn) {
+        this.setListenerOnBookmarkLoggedIn(this.saveOrDeleteCallback, this.keyword, this.title, this.text, this.date, this.source, this.link, this.image);
       } else {
         this.setListenerLoggedOut();
       }
