@@ -77,7 +77,7 @@ const headerCallback = () => {
           .then(data => {
             const keywords = getKeywordsFromArticles(data);
             info.renderInfo(user.name, data.length, keywords);
-            cardList.renderSavedCards(data, true);
+            cardList.renderSavedCards(data, true, mainApi.removeArticle.bind(mainApi));
           })
       } else {
         window.location.replace('./index.html');
