@@ -133,7 +133,7 @@ export default class NewsCardList extends BaseComponent{
       {
         elem: this.button,
         event: 'click',
-        callback: this._addCard,
+        callback: this._addCard.bind(this),
       }
     ])
   }
@@ -141,8 +141,10 @@ export default class NewsCardList extends BaseComponent{
   _addCard = () => {
     this.container.append(...this.cards.slice(0, 3));
     this.cards.splice(0, 3);
-    if (6 < this.cards.length <= 99) {
+    if (this.cards.length > 0 && this.cards.length <= 99) {
       this._showMore();
+      return;
     }
+    this.button.classList.remove('more-button_visible');
   }
 }
