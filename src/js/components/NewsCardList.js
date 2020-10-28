@@ -20,11 +20,15 @@ export default class NewsCardList extends BaseComponent{
   }
 
   renderCards(createCardsArrayCallback) {
+    this.container.removeEventListener('click', this._eventHandler);
     this.removeAllCards();
     this.cards = createCardsArrayCallback();
     this._addCard();
     this.removeLoader();
-    document.querySelector(`.${this.cardsBlock}`).classList.remove(this.hiddenElemClass);
+    const resultsBlock = document.querySelector(`.${this.cardsBlock}`);
+    if(resultsBlock) {
+      resultsBlock.classList.remove(this.hiddenElemClass);
+    }
   }
 
   renderResults(keywords, cardsArray, loggedIn, saveArticle) {
@@ -99,7 +103,10 @@ export default class NewsCardList extends BaseComponent{
   }
 
   removeLoader() {
-    document.querySelector(`.${this.loaderBlock}`).classList.add(this.hiddenElemClass);
+    const loader = document.querySelector(`.${this.loaderBlock}`);
+    if(loader) {
+      loader.classList.add(this.hiddenElemClass);
+    }
   }
 
   removeCardsBlock() {

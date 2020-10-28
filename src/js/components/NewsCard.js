@@ -85,20 +85,9 @@ export default class NewsCard extends BaseComponent {
     });
   }
 
-  binClickHandler = (event) => {
-    if(event.target.classList.contains('button_bin')) {
-      const that = this;
-      this.saveOrDeleteCallback(that.id)
-        .then((data) => {that.card.remove()})
-    }
-  }
-
   setListenerOnBin = (deleteArticle, id) => {
-    // const obj1 = this;
     this.card.addEventListener('click', (event) => {
-      // const obj2 = obj1;
       if(event.target.classList.contains('button_bin')) {
-        // const obj3 = obj2;
         deleteArticle(id)
           .then((data) => {this.card.remove()})
       }
