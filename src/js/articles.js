@@ -77,12 +77,13 @@ const headerCallback = () => {
         });
         mainApi.getArticles()
           .then(data => {
-            const keywords = getKeywordsFromArticles(data);
-            info.renderInfo(user.name, data.length, keywords);
+            const articles = data.filter(card => card.owner === user.id);
+            const keywords = getKeywordsFromArticles(articles);
+            info.renderInfo(user.name, articles.length, keywords);
             // cardList.renderSavedCards(data, true, mainApi.removeArticle.bind(mainApi));
             cardList.renderCards(() => {
               const cards = [];
-              data.forEach(elem => {
+              articles.forEach(elem => {
                 const card = new NewsCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link, loggedIn, mainApi.removeArticle.bind(mainApi), elem.keyword, elem._id).renderIcon();
                 cards.push(card);
               })
