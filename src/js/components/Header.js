@@ -15,7 +15,7 @@ export default class Header extends BaseComponent {
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
           <img src="../images/burger_black.svg" alt="menu icon" class="header__burger">
-          <img src="../images/close_white.svg" alt="close icon" class="menu__close">
+          <img src="../images/close_white.svg" alt="close icon" class="menu__close hidden">
           <div class="header__dark-area">
             <nav class="menu menu_${this.headerColor}">
               <a href="./" id="homepage" class="menu__item menu__item_${this.headerColor} link">Главная</a>
@@ -51,7 +51,7 @@ export default class Header extends BaseComponent {
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
           <img src="../images/burger.svg" alt="menu icon" class="header__burger">
-          <img src="../images/close.svg" alt="close icon" class="menu__close">
+          <img src="../images/close.svg" alt="close icon" class="menu__close hidden">
           <div class="header__dark-area">
             <nav class="menu">
               <a href="./" id="homepage" class="menu__item menu__item_active link">Главная</a>

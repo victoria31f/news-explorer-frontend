@@ -11,7 +11,7 @@ import {
 } from './constants/popupMarkup';
 import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK, LOADER_BLOCK, NOT_FOUND_BLOCK } from "./constants/cards";
-import { HEADER_CONTAINER, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID} from "./constants/header";
+import { HEADER, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID, HEADER_CONTAINER } from "./constants/header";
 import { getTodayDate, getSevenDaysBackDate, convertDate } from "./utils/utils";
 
 import Popup from "./components/Popup";
@@ -22,7 +22,7 @@ import SearchForm from "./components/SearchForm";
 import NewsCard from "./components/NewsCard";
 import NewsCardList from "./components/NewsCardList";
 import Header from "./components/Header";
-
+import BurgerMenu from "./components/BurgerMenu";
 
 
 const mainApi = new MainApi({
@@ -43,6 +43,8 @@ const newsApi = new NewsApi({
     'Content-Type': 'application/json',
   }
 })
+
+const burgerMenu = new BurgerMenu();
 
 
 const successPopup = () => {
@@ -87,7 +89,7 @@ const loginPopup = () => {
 }
 
 const header = new Header({
-  container: HEADER_CONTAINER,
+  container: HEADER,
   headerColor: HEADER_COLOR_WHITE,
   loginCallback: loginPopup,
   menuItemActive: HEADER_ITEM_ACTIVE_CLASS,
@@ -109,6 +111,7 @@ const headerCallback = () => {
       } else {
         header.renderLoggedOut();
       }
+      burgerMenu.setListeners(HEADER_CONTAINER);
     })
 }
 

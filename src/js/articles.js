@@ -2,7 +2,7 @@ import '../css/articles.css';
 
 import {
   HEADER_COLOR_BLACK,
-  HEADER_CONTAINER,
+  HEADER,
   HEADER_ITEM_ACTIVE_CLASS,
   HEADER_ITEM_ARTICLES_ID
 } from "./constants/header";
@@ -25,7 +25,7 @@ const mainApi = new MainApi({
 });
 
 const header = new Header({
-  container: HEADER_CONTAINER,
+  container: HEADER,
   headerColor: HEADER_COLOR_BLACK,
   menuItemActive: HEADER_ITEM_ACTIVE_CLASS,
   currentPageItem: HEADER_ITEM_ARTICLES_ID,

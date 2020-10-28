@@ -1,7 +1,6 @@
 @import "_visible/menu__close_visible.css";
 
 .menu__close {
-  display: none;
   width: 14px;
   height: 14px;
 }
