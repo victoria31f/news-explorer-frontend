@@ -15,7 +15,7 @@ export default class Header extends BaseComponent {
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
           <img src="../images/burger_${this.headerColor}.svg" alt="menu icon" class="header__burger">
-          <img src="../images/close_white.svg" alt="close icon" class="menu__close hidden">
+          <img src="../images/close_${this.headerColor}.svg" alt="close icon" class="menu__close hidden">
           <div class="header__dark-area">
             <nav class="menu menu_${this.headerColor}">
               <a href="./" id="homepage" class="menu__item menu__item_${this.headerColor} link">Главная</a>
@@ -50,8 +50,8 @@ export default class Header extends BaseComponent {
     this.container.insertAdjacentHTML('beforeend', `
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
-          <img src="../images/burger.svg" alt="menu icon" class="header__burger">
-          <img src="../images/close.svg" alt="close icon" class="menu__close hidden">
+          <img src="../images/burger_${this.headerColor}.svg" alt="menu icon" class="header__burger">
+          <img src="../images/close_${this.headerColor}.svg" alt="close icon" class="menu__close hidden">
           <div class="header__dark-area">
             <nav class="menu">
               <a href="./" id="homepage" class="menu__item menu__item_active link">Главная</a>
