@@ -14,7 +14,7 @@ export default class Header extends BaseComponent {
     this.container.insertAdjacentHTML('beforeend', `
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
-          <img src="../images/burger_black.svg" alt="menu icon" class="header__burger">
+          <img src="../images/burger_${this.headerColor}.svg" alt="menu icon" class="header__burger">
           <img src="../images/close_white.svg" alt="close icon" class="menu__close hidden">
           <div class="header__dark-area">
             <nav class="menu menu_${this.headerColor}">
