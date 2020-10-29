@@ -122,10 +122,10 @@ header.render(headerCallback);
 
 // loginButton.addEventListener('click', loginPopup);
 
-const newCard = new NewsCard(loginPopup);
+// const newCard = new NewsCard(loginPopup);
 const cardList = new NewsCardList({
   container: CARDS_CONTAINER,
-  createCard: newCard.renderIcon.bind(newCard),
+  // createCard: newCard.renderIcon.bind(newCard),
   buttonShowMore: SHOW_MORE_BUTTON,
   cardsBlockClass: CARDS_BLOCK,
   hiddenElemClass: HIDDEN_ELEM_CLASS,
@@ -154,22 +154,24 @@ searchForm.setEventListeners((e) => {
         const articles = data.articles;
         mainApi.getUserData()
           .then(data => {
+            const getCardsArray = (loggedIn) => {
+              const cards = [];
+              articles.forEach(elem => {
+                const card = new NewsCard(elem.urlToImage, convertDate(elem.publishedAt), elem.title, elem.description, elem.source.name, elem.url, loggedIn, mainApi.createArticle.bind(mainApi), keywords, null, loginPopup).renderIcon();
+                cards.push(card);
+              })
+              return cards;
+            }
+
             if (data.data) {
               const loggedIn = true;
               // cardList.renderResults(keywords, articles, true, mainApi.createArticle.bind(mainApi));
-              cardList.renderCards(() => {
-                const cards = [];
-                articles.forEach(elem => {
-                  const card = new NewsCard(elem.urlToImage, convertDate(elem.publishedAt), elem.title, elem.description, elem.source.name, elem.url, loggedIn, mainApi.createArticle.bind(mainApi), keywords).renderIcon();
-                  cards.push(card);
-                })
-                return cards;
-              })
+              cardList.renderCards(getCardsArray(loggedIn));
 
               // newCard.setListenerLoggedOut();
             } else {
               const loggedIn = false;
-              cardList.renderResults(keywords, articles, loggedIn);
+              cardList.renderCards(getCardsArray(loggedIn));
               // newCard.setListenerLoggedOut();
             }
           });

@@ -35,11 +35,11 @@ const info = new Info({
   container: INFO_CONTAINER,
 });
 
-const newCard = new NewsCard();
+// const newCard = new NewsCard();
 
 const cardList = new NewsCardList({
   container: CARDS_CONTAINER,
-  createCard: newCard.renderIcon.bind(newCard),
+  // createCard: newCard.renderIcon.bind(newCard),
   buttonShowMore: SHOW_MORE_BUTTON,
   cardsBlockClass: CARDS_BLOCK,
   hiddenElemClass: HIDDEN_ELEM_CLASS,
@@ -81,14 +81,15 @@ const headerCallback = () => {
             const keywords = getKeywordsFromArticles(articles);
             info.renderInfo(user.name, articles.length, keywords);
             // cardList.renderSavedCards(data, true, mainApi.removeArticle.bind(mainApi));
-            cardList.renderCards(() => {
+            const getCardsArray = () => {
               const cards = [];
               articles.forEach(elem => {
                 const card = new NewsCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link, loggedIn, mainApi.removeArticle.bind(mainApi), elem.keyword, elem._id).renderIcon();
                 cards.push(card);
               })
               return cards;
-            })
+            }
+            cardList.renderCards(getCardsArray());
           })
       } else {
         window.location.replace('./index.html');

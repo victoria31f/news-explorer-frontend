@@ -69,7 +69,7 @@ export default class NewsCard extends BaseComponent {
   }
 
   setListenerLoggedOut() {
-    this.card.addEventListener('click', this._showLogin);
+    this.card.addEventListener('click', this._showLogin.bind(this));
   }
 
   setListenerOnBookmarkLoggedIn(saveArticle, keyword, title, text, date, source, link, image) {
@@ -98,7 +98,7 @@ export default class NewsCard extends BaseComponent {
     if (event.target.classList.contains('button_bookmark')) {
       this.loginButton = event.target.parentNode.querySelector('.card__button-login');
       this.loginButton.classList.remove('hidden');
-      this.loginButton.addEventListener('click', this._loginHandler);
+      this.loginButton.addEventListener('click', this._loginHandler.bind(this));
     }
   }
 

@@ -19,10 +19,10 @@ export default class NewsCardList extends BaseComponent{
     }
   }
 
-  renderCards(createCardsArrayCallback) {
+  renderCards(cardsArray) {
     this.container.removeEventListener('click', this._eventHandler);
     this.removeAllCards();
-    this.cards = createCardsArrayCallback();
+    this.cards = cardsArray;
     this._addCard();
     this.removeLoader();
     const resultsBlock = document.querySelector(`.${this.cardsBlock}`);
