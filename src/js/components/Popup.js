@@ -29,7 +29,6 @@ export default class Popup extends BaseComponent {
         elem: this.closeButton,
         event: 'click',
         callback: () => {
-          console.log('click on close');
           this.close();
         },
       },
@@ -37,7 +36,6 @@ export default class Popup extends BaseComponent {
         elem: this.closeField,
         event: 'click',
         callback: () => {
-          console.log('click on close field');
           this.close();
         },
       },
@@ -45,7 +43,6 @@ export default class Popup extends BaseComponent {
         elem: document.querySelector('.popup__another-popup-button'),
         event: 'click',
         callback: () => {
-          console.log('click on signup');
           parent.close();
           this.popupInstance();
         },

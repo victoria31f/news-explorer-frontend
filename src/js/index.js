@@ -60,7 +60,7 @@ const signupPopup = () => {
         if(data.data) {
           popupSignup.close();
           successPopup();
-          return console.log('Signed up', data);
+          return;
         }
         signupForm.setServerError(data);
       })
@@ -79,7 +79,7 @@ const loginPopup = () => {
           popupLogin.close();
           header.render(headerCallback);
           cardList.removeCardsBlock();
-          return console.log('Logged in', data);
+          return;
         }
         loginForm.setServerError(data);
       })
@@ -136,7 +136,7 @@ searchForm.setEventListeners((e) => {
     newsApi.getNews(keywords)
       .then(data => {
         if (!data.articles) {
-          return console.log(data);
+          return data;
         }
         if (data.articles.length === 0) {
           cardList.renderNotFound();

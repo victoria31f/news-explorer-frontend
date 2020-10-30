@@ -22,7 +22,6 @@ export default class MainApi {
         return res.json().then(response => Promise.reject(`Ошибка: ${response.message}`));
       })
       .catch(err => {
-        console.log(err);
         return err;
       })
   }
@@ -43,7 +42,6 @@ export default class MainApi {
         return res.json().then(response => Promise.reject(`Ошибка: ${response.message}`));
       })
       .catch(err => {
-        console.log(err);
         return err;
       })
   }
@@ -60,7 +58,6 @@ export default class MainApi {
         return res.json().then(response => Promise.reject(`Ошибка: ${response.message}`));
       })
       .catch(err => {
-        console.log(err);
         return err;
       })
   }
@@ -80,7 +77,6 @@ export default class MainApi {
         return res.json().then(response => Promise.reject(`Ошибка: ${response.message}`));
       })
       .catch(err => {
-        console.log(err);
         return err;
       })
   }
@@ -103,7 +99,7 @@ export default class MainApi {
         return data.data;
       })
       .catch(err => {
-        console.log(err);
+        return err;
       })
   }
 
@@ -126,7 +122,6 @@ export default class MainApi {
         return data.data;
       })
       .catch(err => {
-        console.log(err);
         return err;
       })
   }
@@ -149,7 +144,7 @@ export default class MainApi {
         return data;
       })
       .catch(err => {
-        console.log(err);
+        return err;
       })
   }
 

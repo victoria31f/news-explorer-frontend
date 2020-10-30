@@ -11,7 +11,6 @@ export default class BurgerMenu {
   }
 
   _clickHandler = () => {
-    console.log('burger clicked');
     this.openCloseBurgerMenu();
     this.handler = this.openCloseBurgerMenu.bind(this);
     this.closeIcon.addEventListener('click', this.handler);
