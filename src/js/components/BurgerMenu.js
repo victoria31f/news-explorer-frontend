@@ -3,15 +3,8 @@ export default class BurgerMenu {
 
   }
 
-  // const burgerMenu = document.querySelector('.header__burger');
-// const menu = document.querySelector('.menu');
-// const headerContainer = document.querySelector('.header__container');
-// const closeIcon = document.querySelector('.menu__close');
-// const darkArea = document.querySelector('.header__dark-area');
-//
-
   setListeners(container) {
-    this.container = container;
+    this.container = document.querySelector('.header__container');
     this.burgerMenu = document.querySelector('.header__burger');
     this.closeIcon = document.querySelector('.menu__close');
     this.burgerMenu.addEventListener('click', this._clickHandler.bind(this));
@@ -20,7 +13,14 @@ export default class BurgerMenu {
   _clickHandler = () => {
     console.log('burger clicked');
     this.openCloseBurgerMenu();
-    this.closeIcon.addEventListener('click', this.openCloseBurgerMenu.bind(this));
+    this.handler = this.openCloseBurgerMenu.bind(this);
+    this.closeIcon.addEventListener('click', this.handler);
+    this.darkArea.addEventListener('click', this.handler);
+
+  }
+
+  _boundClickHandler = () => {
+    this.openCloseBurgerMenu.bind(this);
   }
 
   openCloseBurgerMenu = () => {
@@ -34,6 +34,9 @@ export default class BurgerMenu {
     if (screen.width < 767) {
       this.closeIcon.classList.remove('hidden');
     }
+    this.closeIcon.removeEventListener('click', this.handler);
+    this.darkArea.removeEventListener('click', this.handler);
+
   }
 
 
