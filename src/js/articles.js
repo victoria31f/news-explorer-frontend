@@ -8,6 +8,7 @@ import {
 } from "./constants/header";
 import { INFO_CONTAINER } from "./constants/articles";
 import { CARDS_BLOCK, CARDS_CONTAINER, HIDDEN_ELEM_CLASS, SHOW_MORE_BUTTON } from "./constants/cards";
+import { CURRENT_PAGE } from "./constants/articles";
 
 import Header from "./components/Header";
 import MainApi from "./api/MainApi";
@@ -86,7 +87,7 @@ const headerCallback = () => {
             const getCardsArray = () => {
               const cards = [];
               articles.forEach(elem => {
-                const card = new NewsCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link, loggedIn, mainApi.removeArticle.bind(mainApi), elem.keyword, elem._id).renderIcon();
+                const card = new NewsCard(elem.image, elem.date, elem.title, elem.text, elem.source, elem.link, loggedIn, mainApi.removeArticle.bind(mainApi), elem.keyword, elem._id).renderIcon(CURRENT_PAGE);
                 cards.push(card);
               })
               return cards;

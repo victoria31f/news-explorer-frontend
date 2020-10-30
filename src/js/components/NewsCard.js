@@ -16,10 +16,10 @@ export default class NewsCard extends BaseComponent {
     this.keyword = keyword;
   }
 
-  renderIcon() {
+  renderIcon(currentPage) {
     this.card = document.createElement('div');
     this.card.classList.add('grid__item','card');
-    if(window.location.pathname === '/articles.html') {
+    if(currentPage === 'articles') {
       this.card.insertAdjacentHTML('beforeend', `
           <picture class="grid__image">
             <source media="(max-width:767px)" srcset="${this.image}">
