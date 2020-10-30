@@ -41,99 +41,7 @@
 
     <div class="results__container hidden">
       <h2 class="section-title results__title">Результаты поиска</h2>
-      <div class="grid" id="cards-container">
-        <div class="grid__item card">
-          <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="<%=require('../images/results/1_mobile.jpg').default%>">
-            <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
-          </picture>
-          <div class="card__btn-container">
-            <button class="button button_square button_bookmark card__button"></button>
-          </div>
-          <div class="card__content">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние - парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">лента.ру</p>
-          </div>
-        </div>
-        <div class="grid__item card">
-          <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="<%=require('../images/results/2_mobile.jpg').default%>">
-            <img class="card__image" src="<%=require('../images/results/2.jpg').default%>" alt="flowers">
-          </picture>
-          <div class="card__btn-container">
-            <button class="button button_square button_bookmark button_bookmark-saved card__button"></button>
-          </div>
-          <div class="card__content">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние — парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">лента.ру</p>
-          </div>
-        </div>
-        <div class="grid__item card">
-          <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="<%=require('../images/results/3_mobile.jpg').default%>">
-            <img class="card__image" src="<%=require('../images/results/3.jpg').default%>" alt="flowers">
-          </picture>
-          <div class="card__btn-container">
-            <button class="button card__button-login">Войдите, чтобы сохранять статьи</button>
-            <button class="button button_square button_bookmark card__button"></button>
-          </div>
-          <div class="card__content">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние - парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">ЛЕНТА.РУ</p>
-          </div>
-        </div>
-        <div class="grid__item card">
-          <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="<%=require('../images/results/4_mobile.jpg').default%>">
-            <img class="card__image" src="<%=require('../images/results/4.jpg').default%>" alt="flowers">
-          </picture>
-          <div class="card__btn-container">
-            <button class="button button_square button_bookmark card__button"></button>
-          </div>
-          <div class="card__content">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние - парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">ЛЕНТА.РУ</p>
-          </div>
-        </div>
-        <div class="grid__item card">
-          <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="<%=require('../images/results/5_mobile.jpg').default%>">
-            <img class="card__image" src="<%=require('../images/results/5.jpg').default%>" alt="flowers">
-          </picture>
-          <div class="card__btn-container">
-            <button class="button button_square button_bookmark card__button"></button>
-          </div>
-          <div class="card__content">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние - парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">ЛЕНТА.РУ</p>
-          </div>
-        </div>
-        <div class="grid__item card">
-          <picture class="grid__image">
-            <source media="(max-width:767px)" srcset="<%=require('../images/results/1_mobile.jpg').default%>">
-            <img class="card__image" src="<%=require('../images/results/1.jpg').default%>" alt="flowers">
-          </picture>
-          <div class="card__btn-container">
-            <button class="button button_square button_bookmark card__button"></button>
-          </div>
-          <div class="card__content">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние - парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">лента.ру</p>
-          </div>
-        </div>
-      </div>
+      <div class="grid" id="cards-container"></div>
       <button class="more-button results__button" id="show-more">Показать ещё</button>
     </div>
 
@@ -159,9 +67,8 @@
            class="about__image">
       <div class="about__info">
         <h2 class="section-title about__title">Об авторе</h2>
-        <p class="about__text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
-        <p class="about__text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь
-          потенциальным заказчикам.</p>
+        <p class="about__text">Привет! Я Вика. Учусь разрабатывать сайты на JS и Node.js.</p>
+        <p class="about__text">Стек технологий: HTML5, CCS3 (+адаптивная вёрстка), ES6, Node.js, Github, MongoDB</p>
       </div>
     </div>
   </section>
