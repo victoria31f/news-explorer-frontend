@@ -21,7 +21,6 @@ export default class Info {
     this.allKeywords = keywords[0];
     this.keywordsNumber = keywords.length;
     if(this.keywordsNumber > 1) {
-      // this.keywordTwo = keywords[1];
       this.allKeywords += ', ' + keywords[1];
     }
     this.keywordsRest = '';

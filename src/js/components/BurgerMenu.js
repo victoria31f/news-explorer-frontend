@@ -19,9 +19,6 @@ export default class BurgerMenu {
 
   }
 
-  _boundClickHandler = () => {
-    this.openCloseBurgerMenu.bind(this);
-  }
 
   openCloseBurgerMenu = () => {
     this.menu = document.querySelector('.menu');
@@ -38,12 +35,5 @@ export default class BurgerMenu {
     this.darkArea.removeEventListener('click', this.handler);
 
   }
-
-
-
-// burgerMenu.addEventListener('click', () => {
-//   openCloseBurgerMenu();
-//   closeIcon.addEventListener('click', openCloseBurgerMenu);
-// });
 
 }

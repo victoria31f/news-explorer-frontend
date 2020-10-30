@@ -29,13 +29,6 @@ export default class Header extends BaseComponent {
         </div>`
     );
     this.container.querySelector(`#${this.currentPageItem}`).classList.add(this.menuItemActive);
-    // this._setListeners([
-    //   {
-    //     elem: this.container.querySelector('.button-logout'),
-    //     event: 'click',
-    //     callback: logoutApi,
-    //   }
-    // ])
     this.setListenerLogout(logoutApi);
   }
 

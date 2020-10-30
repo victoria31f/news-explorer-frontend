@@ -36,7 +36,6 @@ export default class NewsCard extends BaseComponent {
             <p class="card__source">${this.source}</p>
           </div>`
       );
-      // this.card.addEventListener('click', this.binClickHandler.bind(this));
       this.setListenerOnBin(this.saveOrDeleteCallback, this.id);
     } else {
       this.card.insertAdjacentHTML('beforeend', `
@@ -62,8 +61,6 @@ export default class NewsCard extends BaseComponent {
         this.setListenerLoggedOut();
       }
     }
-    // this.setListenerOnBin(saveOrDeleteArticleCallback, id);
-
 
     return this.card;
   }
@@ -113,13 +110,5 @@ export default class NewsCard extends BaseComponent {
   _save = (event) => {
     event.target.classList.toggle('button_bookmark-saved');
   }
-
-  // _delete(event) {
-  //   this.deleteCard(this._element.id)
-  //     .then(() => {
-  //       this.removeEventListeners();
-  //       this._element.remove();
-  //     })
-  // }
 
 }

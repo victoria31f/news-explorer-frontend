@@ -27,7 +27,6 @@ import BurgerMenu from "./components/BurgerMenu";
 
 const mainApi = new MainApi({
   baseUrl: 'https://api.explorerofnews.ga',
-  // baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   }
@@ -72,7 +71,6 @@ const signupPopup = () => {
 const loginPopup = () => {
   const popupLogin = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup);
   popupLogin.open();
-  // new Form(document.forms['login'], 'popup__button_active').setListeners(mainApi.signin.bind(mainApi));
   const loginForm = new Form(document.forms['login'], 'popup__button_active');
   loginForm.setListeners(() => {
     mainApi.signin(...loginForm.getInfo())
@@ -118,14 +116,8 @@ const headerCallback = () => {
 header.render(headerCallback);
 
 
-// const loginButton = document.querySelector('.button-login');
-
-// loginButton.addEventListener('click', loginPopup);
-
-// const newCard = new NewsCard(loginPopup);
 const cardList = new NewsCardList({
   container: CARDS_CONTAINER,
-  // createCard: newCard.renderIcon.bind(newCard),
   buttonShowMore: SHOW_MORE_BUTTON,
   cardsBlockClass: CARDS_BLOCK,
   hiddenElemClass: HIDDEN_ELEM_CLASS,
@@ -140,7 +132,6 @@ searchForm.setEventListeners((e) => {
   if (searchForm._validateInput()) {
     searchForm.getInfo();
     const keywords = searchForm.options.join();
-    // cardList.removeAllCards();
     cardList.renderLoader();
     newsApi.getNews(keywords)
       .then(data => {
@@ -165,14 +156,11 @@ searchForm.setEventListeners((e) => {
 
             if (data.data) {
               const loggedIn = true;
-              // cardList.renderResults(keywords, articles, true, mainApi.createArticle.bind(mainApi));
               cardList.renderCards(getCardsArray(loggedIn));
 
-              // newCard.setListenerLoggedOut();
             } else {
               const loggedIn = false;
               cardList.renderCards(getCardsArray(loggedIn));
-              // newCard.setListenerLoggedOut();
             }
           });
       });
@@ -182,40 +170,4 @@ searchForm.setEventListeners((e) => {
   }
 
 });
-
-
-
-//
-// signupButton.addEventListener('click', () => {
-//   console.log('signup clicked');
-//   signupPopup.open();
-// })
-
-
-// const popup = document.querySelector('.popup');
-//
-//
-// const burgerMenu = document.querySelector('.header__burger');
-// const menu = document.querySelector('.menu');
-// const headerContainer = document.querySelector('.header__container');
-// const closeIcon = document.querySelector('.menu__close');
-// const darkArea = document.querySelector('.header__dark-area');
-//
-// const openCloseBurgerMenu = () => {
-//   menu.classList.toggle('menu_opened');
-//   headerContainer.classList.toggle('header__container_menu-opened');
-//   darkArea.classList.toggle('header__dark-area_opened');
-//   burgerMenu.classList.toggle('header__burger_invisible');
-//   if (screen.width < 767) {
-//     closeIcon.classList.toggle('menu__close_visible');
-//   }
-// }
-//
-
-//
-// burgerMenu.addEventListener('click', () => {
-//   openCloseBurgerMenu();
-//   closeIcon.addEventListener('click', openCloseBurgerMenu);
-// });
-
 

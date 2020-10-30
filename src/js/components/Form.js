@@ -5,7 +5,6 @@ export default class Form extends BaseComponent {
     super();
     this.form = form;
     this.buttonActiveClass = buttonActiveClass;
-    // this.elements = this.form.elements;
     this.submitButton = this.form.elements['submit'];
     this.options = [];
   }
@@ -101,15 +100,7 @@ export default class Form extends BaseComponent {
 
   _handleSubmitListener = (e) => {
     e.preventDefault();
-    // this._getInfo();
     this.api();
-    // this.api(...this.options)
-    //   .then(data => {
-    //     if (data.data) {
-    //       return console.log('Success');
-    //     }
-    //     this._setServerError(data);
-    //   });
     this._clear();
     this.options.splice(0);
   }
