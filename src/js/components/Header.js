@@ -14,15 +14,15 @@ export default class Header extends BaseComponent {
     this.container.insertAdjacentHTML('beforeend', `
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
-          <img src="../images/burger_${this.headerColor}.svg" alt="menu icon" class="header__burger">
-          <img src="../images/close_${this.headerColor}.svg" alt="close icon" class="menu__close hidden">
+          <img src="./images/burger_${this.headerColor}.svg" alt="menu icon" class="header__burger">
+          <img src="./images/close_${this.headerColor}.svg" alt="close icon" class="menu__close hidden">
           <div class="header__dark-area"></div>
           <nav class="menu menu_${this.headerColor}">
             <a href="./" id="homepage" class="menu__item menu__item_${this.headerColor} link">Главная</a>
             <a href="./articles.html" id="articles" class="menu__item menu__item_${this.headerColor} link">Сохранённые статьи</a>
             <button class="menu__item menu__item_${this.headerColor} button-logout">
               <span class="button-logout__text">${username}</span>
-              <img src="../images/logout_${this.headerColor}.svg" alt="logout icon"
+              <img src="./images/logout_${this.headerColor}.svg" alt="logout icon"
                    class="menu__icon button-logout__image">
             </button>
           </nav>
@@ -42,8 +42,8 @@ export default class Header extends BaseComponent {
     this.container.insertAdjacentHTML('beforeend', `
         <div class="header__container">
           <a href="./" class="logo header__logo link">NewsExplorer</a>
-          <img src="../images/burger_${this.headerColor}.svg" alt="menu icon" class="header__burger">
-          <img src="../images/close_${this.headerColor}.svg" alt="close icon" class="menu__close hidden">
+          <img src="./images/burger_${this.headerColor}.svg" alt="menu icon" class="header__burger">
+          <img src="./images/close_${this.headerColor}.svg" alt="close icon" class="menu__close hidden">
           <div class="header__dark-area"></div>
           <nav class="menu">
             <a href="./" id="homepage" class="menu__item menu__item_active link">Главная</a>
