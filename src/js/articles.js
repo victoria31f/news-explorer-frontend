@@ -4,7 +4,7 @@ import {
   HEADER_COLOR_BLACK,
   HEADER,
   HEADER_ITEM_ACTIVE_CLASS,
-  HEADER_ITEM_ARTICLES_ID
+  HEADER_ITEM_ARTICLES_ID, HEADER_CONTAINER, HEADER_BG_COLOR_WHITE
 } from "./constants/header";
 import { INFO_CONTAINER } from "./constants/articles";
 import { CARDS_BLOCK, CARDS_CONTAINER, HIDDEN_ELEM_CLASS, SHOW_MORE_BUTTON } from "./constants/cards";
@@ -14,6 +14,7 @@ import MainApi from "./api/MainApi";
 import Info from "./components/Info";
 import NewsCardList from "./components/NewsCardList";
 import NewsCard from "./components/NewsCard";
+import BurgerMenu from "./components/BurgerMenu";
 
 
 const mainApi = new MainApi({
@@ -29,6 +30,8 @@ const header = new Header({
   menuItemActive: HEADER_ITEM_ACTIVE_CLASS,
   currentPageItem: HEADER_ITEM_ARTICLES_ID,
 });
+
+const burgerMenu = new BurgerMenu(HEADER_BG_COLOR_WHITE);
 
 const info = new Info({
   container: INFO_CONTAINER,
@@ -73,6 +76,8 @@ const headerCallback = () => {
               window.location.replace('./index.html');
             })
         });
+        burgerMenu.setListeners(HEADER_CONTAINER);
+
         mainApi.getArticles()
           .then(data => {
             const articles = data.filter(card => card.owner === user.id);

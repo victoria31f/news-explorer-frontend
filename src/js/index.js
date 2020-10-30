@@ -11,7 +11,7 @@ import {
 } from './constants/popupMarkup';
 import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK, LOADER_BLOCK, NOT_FOUND_BLOCK } from "./constants/cards";
-import { HEADER, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID, HEADER_CONTAINER } from "./constants/header";
+import { HEADER, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID, HEADER_CONTAINER, HEADER_BG_COLOR_BLACK } from "./constants/header";
 import { getTodayDate, getSevenDaysBackDate, convertDate } from "./utils/utils";
 
 import Popup from "./components/Popup";
@@ -43,7 +43,7 @@ const newsApi = new NewsApi({
   }
 })
 
-const burgerMenu = new BurgerMenu();
+const burgerMenu = new BurgerMenu(HEADER_BG_COLOR_BLACK);
 
 
 const successPopup = () => {

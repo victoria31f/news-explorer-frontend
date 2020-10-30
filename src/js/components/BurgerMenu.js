@@ -1,6 +1,6 @@
 export default class BurgerMenu {
-  constructor() {
-
+  constructor(headerColor) {
+    this.headerColor = headerColor;
   }
 
   setListeners(container) {
@@ -23,8 +23,9 @@ export default class BurgerMenu {
   openCloseBurgerMenu = () => {
     this.menu = document.querySelector('.menu');
     this.darkArea = document.querySelector('.header__dark-area');
-    this.menu.classList.toggle('menu_opened');
-    this.container.classList.toggle('header__container_menu-opened');
+    this.menu.classList.toggle(`menu_opened`);
+    this.menu.classList.toggle(`menu_opened-${this.headerColor}`);
+    this.container.classList.toggle(`header__container_${this.headerColor}`);
     this.darkArea.classList.toggle('header__dark-area_opened');
     this.burgerMenu.classList.toggle('header__burger_invisible');
     this.closeIcon.classList.toggle('hidden');
