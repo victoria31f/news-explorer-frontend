@@ -1,4 +1,7 @@
+@import "./_visible/more-button_visible.css";
+
 .more-button {
+  display: none;
   border-radius: 80px;
   background-color: #ffffff;
   font-family: Roboto, sans-serif;
@@ -9,7 +12,6 @@
   padding: 20px 84px;
   border: none;
   outline: none;
-  display: block;
   cursor: pointer;
 }
 

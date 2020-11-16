@@ -1,0 +1,15 @@
+.articles__button {
+  margin: 64px auto 0 auto;
+}
+
+@media screen and (max-width: 1439px) {
+  .articles__button {
+    margin: 32px auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .articles__button {
+    margin: 16px auto 0 auto;
+  }
+}

@@ -1,7 +1,9 @@
+@import "./_black/menu_black.css";
 @import "./__item/menu__item.css";
 @import "./__icon/menu__icon.css";
 @import "./_opened/menu_opened.css";
 @import "./__close/menu__close.css";
+@import "_opened-white/menu_opened-white.css";
 
 .menu {
   font-family: Roboto, sans-serif;

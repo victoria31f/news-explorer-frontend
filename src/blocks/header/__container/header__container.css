@@ -1,5 +1,6 @@
 @import "./_loggedin/header__container_loggedin.css";
-@import "./_menu-opened/header__container_menu-opened.css";
+@import "_black/header__container_black.css";
+@import "./_white/header__container_white.css";
 
 .header__container {
   padding: 19px 104px 0 104px;

@@ -1,113 +1,173 @@
 import '../css/main.css';
+import {
+    loginPopupTemplate,
+    signupPopupTemplate,
+    SUCCESS_POPUP,
+    popupContainer,
+    closePopupButton,
+    popup,
+    closeField,
+    signupButton
+} from './constants/popupMarkup';
+import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
+import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK, LOADER_BLOCK, NOT_FOUND_BLOCK } from "./constants/cards";
+import { HEADER, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID, HEADER_CONTAINER, HEADER_BG_COLOR_BLACK } from "./constants/header";
+import { getTodayDate, getSevenDaysBackDate, convertDate } from "./utils/utils";
 
-const container = document.querySelector('#popup-content');
-const popup = document.querySelector('.popup');
-const login = `
-    <div class="field-not-clickable">
-      <h3 class="popup__title field-not-clickable">Вход</h3>
-      <form class="popup__form field-not-clickable" id="login" name="login">
-        <label for="email" class="popup__label">Email</label>
-        <input type="email" name="email" id="email" required minlength="2" maxlength="30"
-               class="popup__input popup__input_type_email field-not-clickable" placeholder="Введите почту">
-        <span class="popup__error" id="error-email"></span>
+import Popup from "./components/Popup";
+import NewsApi from "./api/NewsApi";
+import Form from "./components/Form";
+import MainApi from "./api/MainApi";
+import SearchForm from "./components/SearchForm";
+import NewsCard from "./components/NewsCard";
+import NewsCardList from "./components/NewsCardList";
+import Header from "./components/Header";
+import BurgerMenu from "./components/BurgerMenu";
 
-        <label for="password" class="popup__label">Пароль</label>
-        <input type="text" name="password" id="password" required mimnlength="8" maxlength="30"
-               class="popup__input popup__input_type_password field-not-clickable" placeholder="Введите пароль">
-        <span class="popup__error" id="error-password"></span>
 
-        <button type="submit"
-                class="popup__button field-not-clickable edit-profile__button_active"
-                id="login-button">Войти</button>
-        <span class="popup__text">или <span class="popup__text_blue popup__signup-button">Зарегистрироваться</span></span>
-      </form>
-    </div>
-`
-
-const signup = `
-    <div class="field-not-clickable">
-      <h3 class="popup__title field-not-clickable">Вход</h3>
-      <form class="popup__form field-not-clickable" id="login" name="login">
-
-        <label for="email" class="popup__label">Email</label>
-        <input type="email" name="email" id="email" required minlength="2" maxlength="30"
-               class="popup__input popup__input_type_email field-not-clickable" placeholder="Введите почту">
-        <span class="popup__error" id="error-email"></span>
-
-        <label for="password" class="popup__label">Пароль</label>
-        <input type="text" name="password" id="password" required mimnlength="8" maxlength="30"
-               class="popup__input popup__input_type_password field-not-clickable" placeholder="Введите пароль">
-        <span class="popup__error" id="error-password"></span>
-
-        <label for="name" class="popup__label">Имя</label>
-        <input type="text" name="name" id="name" required minlength="2" maxlength="30"
-               class="popup__input popup__input_type_name field-not-clickable" placeholder="Введите своё имя">
-        <span class="popup__error" id="error-name"></span>
-
-        <button type="submit"
-                class="popup__button field-not-clickable edit-profile__button_active"
-                id="signup-button">Зарегистрироваться</button>
-        <span class="popup__text">или <span class="popup__text_blue popup__signin-button">Войти</span></span>
-      </form>
-    </div>
-`
-
-const successMsg = `
-  <div class="field-not-clickable">
-    <h3 class="popup__title field-not-clickable">Пользователь успешно зарегистрирован!</h3>
-    <span class="popup__text popup__text_big popup__text_blue popup__signin-button">Выполнить вход</span>
-  </div>
-`
-
-const burgerMenu = document.querySelector('.header__burger');
-const menu = document.querySelector('.menu');
-const headerContainer = document.querySelector('.header__container');
-const closeIcon = document.querySelector('.menu__close');
-const darkArea = document.querySelector('.header__dark-area');
-
-const openCloseBurgerMenu = () => {
-  menu.classList.toggle('menu_opened');
-  headerContainer.classList.toggle('header__container_menu-opened');
-  darkArea.classList.toggle('header__dark-area_opened');
-  burgerMenu.classList.toggle('header__burger_invisible');
-  if (screen.width < 767) {
-    closeIcon.classList.toggle('menu__close_visible');
+const mainApi = new MainApi({
+  baseUrl: 'https://api.explorerofnews.ga',
+  headers: {
+    'Content-Type': 'application/json',
   }
+});
+
+
+const newsApi = new NewsApi({
+  baseUrl: NEWSAPI_DOMAIN,
+  apiKey: API_KEY_NEWSAPI,
+  dateTo: getTodayDate(),
+  dateFrom: getSevenDaysBackDate(),
+  headers: {
+    'Content-Type': 'application/json',
+  }
+})
+
+const burgerMenu = new BurgerMenu(HEADER_BG_COLOR_BLACK);
+
+
+const successPopup = () => {
+  new Popup(popup, popupContainer, SUCCESS_POPUP, closePopupButton, closeField, loginPopup).open();
+}
+
+const signupPopup = () => {
+  const popupSignup = new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup);
+  popupSignup.open();
+  const signupForm = new Form(document.forms['signup'], 'popup__button_active');
+  signupForm.setListeners(() => {
+    mainApi.signup(...signupForm.getInfo())
+      .then(data => {
+        if(data.data) {
+          popupSignup.close();
+          successPopup();
+          return;
+        }
+        signupForm.setServerError(data);
+      })
+  });
 }
 
 
-document.querySelector('.button-login').addEventListener('click', () => {
-  // if (container.lastElementChild.className !== 'popup__close') {
-  //   container.removeChild(container.lastElementChild);
-  // }
-  container.insertAdjacentHTML('beforeend', login);
-  popup.classList.add('popup_is-opened');
-  openCloseBurgerMenu();
-
-  document.querySelector('.popup__signup-button').addEventListener('click', () => {
-    container.removeChild(container.lastElementChild);
-    container.insertAdjacentHTML('beforeend', signup);
-    popup.classList.add('popup_is-opened');
-
-    document.querySelector('#signup-button').addEventListener('click', () => {
-      container.removeChild(container.lastElementChild);
-      container.insertAdjacentHTML('beforeend', successMsg);
-      popup.classList.add('popup_is-opened');
-    });
-
-    document.querySelector('.popup__signin-button').addEventListener('click', () => {
-      container.removeChild(container.lastElementChild);
-      container.insertAdjacentHTML('beforeend', login);
-      popup.classList.add('popup_is-opened');
-    });
+const loginPopup = () => {
+  const popupLogin = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup);
+  popupLogin.open();
+  const loginForm = new Form(document.forms['login'], 'popup__button_active');
+  loginForm.setListeners(() => {
+    mainApi.signin(...loginForm.getInfo())
+      .then(data => {
+        if(data.data) {
+          popupLogin.close();
+          header.render(headerCallback);
+          cardList.removeCardsBlock();
+          return;
+        }
+        loginForm.setServerError(data);
+      })
   });
+}
+
+const header = new Header({
+  container: HEADER,
+  headerColor: HEADER_COLOR_WHITE,
+  loginCallback: loginPopup,
+  menuItemActive: HEADER_ITEM_ACTIVE_CLASS,
+  currentPageItem: HEADER_ITEM_HOMEPAGE_ID,
 });
 
+const headerCallback = () => {
+  mainApi.getUserData()
+    .then(data => {
+      if (data.data) {
+        const user = data.data;
+        header.renderLoggedIn(user.name, () => {
+          mainApi.logout()
+            .then(() => {
+              cardList.removeCardsBlock();
+              header.render(headerCallback);
+            })
+        });
+      } else {
+        header.renderLoggedOut();
+      }
+      burgerMenu.setListeners(HEADER_CONTAINER);
+    })
+}
+
+header.render(headerCallback);
 
 
-burgerMenu.addEventListener('click', () => {
-  openCloseBurgerMenu();
-  closeIcon.addEventListener('click', openCloseBurgerMenu);
+const cardList = new NewsCardList({
+  container: CARDS_CONTAINER,
+  buttonShowMore: SHOW_MORE_BUTTON,
+  cardsBlockClass: CARDS_BLOCK,
+  hiddenElemClass: HIDDEN_ELEM_CLASS,
+  loaderBlock: LOADER_BLOCK,
+  notFoundBlock: NOT_FOUND_BLOCK,
+  loginPopupCallback: loginPopup,
+})
+
+const searchForm = new SearchForm(document.forms['search'], 'search-bar__button_active');
+searchForm.setEventListeners((e) => {
+  e.preventDefault();
+  if (searchForm._validateInput()) {
+    searchForm.getInfo();
+    const keywords = searchForm.options.join();
+    cardList.renderLoader();
+    newsApi.getNews(keywords)
+      .then(data => {
+        if (!data.articles) {
+          return data;
+        }
+        if (data.articles.length === 0) {
+          cardList.renderNotFound();
+          return;
+        }
+        const articles = data.articles;
+        mainApi.getUserData()
+          .then(data => {
+            const getCardsArray = (loggedIn) => {
+              const cards = [];
+              articles.forEach(elem => {
+                const card = new NewsCard(elem.urlToImage, convertDate(elem.publishedAt), elem.title, elem.description, elem.source.name, elem.url, loggedIn, mainApi.createArticle.bind(mainApi), keywords, null, loginPopup).renderIcon();
+                cards.push(card);
+              })
+              return cards;
+            }
+
+            if (data.data) {
+              const loggedIn = true;
+              cardList.renderCards(getCardsArray(loggedIn));
+
+            } else {
+              const loggedIn = false;
+              cardList.renderCards(getCardsArray(loggedIn));
+            }
+          });
+      });
+    searchForm.options.splice(0);
+    searchForm._clear();
+
+  }
+
 });
-
 

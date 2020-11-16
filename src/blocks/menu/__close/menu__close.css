@@ -1,7 +1,13 @@
 @import "_visible/menu__close_visible.css";
 
 .menu__close {
+  width: 24px;
+  height: 24px;
   display: none;
-  width: 14px;
-  height: 14px;
+}
+
+@media screen and (max-width: 767px) {
+  .menu__close {
+    display: block;
+  }
 }

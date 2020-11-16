@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -49,7 +51,6 @@ module.exports = {
           },
           {
             loader: 'image-webpack-loader',
-            options: {},
           }
         ],
       },
@@ -60,6 +61,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new WriteFilePlugin(),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/images', to: 'images', flatten: true },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: 'styles/style.[contenthash].css'
     }),
@@ -86,6 +93,7 @@ module.exports = {
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({
       'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+    }),
+
   ]
 }
