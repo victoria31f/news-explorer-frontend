@@ -53,6 +53,7 @@ const successPopup = () => {
 const signupPopup = () => {
   const popupSignup = new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup);
   popupSignup.open();
+  if(window.innerWidth < 768) burgerMenu.closeBurgerMenu();
   const signupForm = new Form(document.forms['signup'], 'popup__button_active');
   signupForm.setListeners(() => {
     mainApi.signup(...signupForm.getInfo())
@@ -71,6 +72,7 @@ const signupPopup = () => {
 const loginPopup = () => {
   const popupLogin = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup);
   popupLogin.open();
+  if(window.innerWidth < 768) burgerMenu.closeBurgerMenu();
   const loginForm = new Form(document.forms['login'], 'popup__button_active');
   loginForm.setListeners(() => {
     mainApi.signin(...loginForm.getInfo())

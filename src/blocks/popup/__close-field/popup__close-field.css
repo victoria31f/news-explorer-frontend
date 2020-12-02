@@ -7,3 +7,10 @@
   content: '';
   background-color: transparent;
 }
+
+@media screen and (max-width: 767px) {
+  .popup__close-field {
+    /*top: -56px;*/
+    /*z-index: 60;*/
+  }
+}

@@ -9,6 +9,7 @@ export default class Popup extends BaseComponent {
     this.closeButton = closeButton;
     this.closeField = closeField;
     this.popupInstance = popupInstance;
+    this.page = document.querySelector('.page');
   }
 
   _setContent() {
@@ -16,14 +17,17 @@ export default class Popup extends BaseComponent {
   }
 
   _clearContent() {
-    this.container.removeChild(this.container.lastElementChild);
+    if(this.container.lastElementChild.classList.contains('popup__form-container')) this.container.removeChild(this.container.lastElementChild);
+
     // this.container.lastElementChild.remove();
   }
 
   open() {
+    this._clearContent();
     const parent = this;
     this._setContent();
     this.popup.classList.add('popup_is-opened');
+    this.page.classList.add('page_noscroll');
     this._setListeners([
       {
         elem: this.closeButton,
@@ -53,6 +57,7 @@ export default class Popup extends BaseComponent {
   close() {
     this._clearContent();
     this.popup.classList.remove('popup_is-opened');
+    this.page.classList.remove('page_noscroll');
     this._clearListeners();
   }
 }
