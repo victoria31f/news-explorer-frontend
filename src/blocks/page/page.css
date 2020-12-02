@@ -4,3 +4,9 @@
   background-color: #e1e2e3;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 767px) {
+  .page {
+    position: absolute;
+  }
+}
