@@ -1,3 +1,5 @@
+@import "./_noscroll/page_noscroll.css";
+
 .page {
   max-width: 1440px;
   min-width: 320px;
