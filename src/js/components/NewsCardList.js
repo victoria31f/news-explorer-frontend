@@ -73,7 +73,8 @@ export default class NewsCardList extends BaseComponent{
     ])
   }
 
-  _addCard = () => {
+  _addCard = (e) => {
+    // e.preventDefault();
     this.container.append(...this.cards.slice(0, 3));
     this.cards.splice(0, 3);
     if (this.cards.length > 0 && this.cards.length <= 99) {

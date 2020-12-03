@@ -16,5 +16,6 @@
   .card__title {
     font-size: 22px;
     line-height: 24px;
+    -webkit-line-clamp: 2;
   }
 }

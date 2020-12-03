@@ -5,6 +5,7 @@
 .search {
   max-width: 608px;
   margin: 0 auto;
+  position: relative;
 }
 
 @media screen and (max-width: 1439px) {
@@ -16,5 +17,6 @@
 @media screen and (max-width: 767px) {
   .search {
     max-width: 288px;
+    height: 100%;
   }
 }

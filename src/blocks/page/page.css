@@ -1,6 +1,18 @@
+@import "./_noscroll/page_noscroll.css";
+
 .page {
   max-width: 1440px;
   min-width: 320px;
   background-color: #e1e2e3;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  .page {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
 }

@@ -13,6 +13,7 @@ import { NEWSAPI_DOMAIN, API_KEY_NEWSAPI } from "./constants/api";
 import { CARDS_CONTAINER, SHOW_MORE_BUTTON, HIDDEN_ELEM_CLASS, CARDS_BLOCK, LOADER_BLOCK, NOT_FOUND_BLOCK } from "./constants/cards";
 import { HEADER, HEADER_COLOR_WHITE, HEADER_ITEM_ACTIVE_CLASS, HEADER_ITEM_HOMEPAGE_ID, HEADER_CONTAINER, HEADER_BG_COLOR_BLACK } from "./constants/header";
 import { getTodayDate, getSevenDaysBackDate, convertDate } from "./utils/utils";
+import { MAX_MOBILE_WIDTH, BODY_ELEMENT } from "./constants/main";
 
 import Popup from "./components/Popup";
 import NewsApi from "./api/NewsApi";
@@ -45,6 +46,23 @@ const newsApi = new NewsApi({
 
 const burgerMenu = new BurgerMenu(HEADER_BG_COLOR_BLACK);
 
+// needed for Android keyboard pushing the content up
+if(window.innerWidth < MAX_MOBILE_WIDTH) {
+  const windowHeight = window.innerHeight;
+  const handleResize = () => {
+    const newWindowHeight = window.innerHeight;
+    if (newWindowHeight < windowHeight) {
+      document.querySelector('.search__search-bar').style.marginTop = `75px`;
+      document.querySelector('.cover').classList.add('cover_keyboard-active');
+    }
+    if (newWindowHeight >= windowHeight) {
+      document.querySelector('.cover').classList.remove('cover_keyboard-active');
+      document.querySelector('.search__search-bar').style.marginTop = `122px`;
+    }
+  }
+  window.addEventListener('resize', handleResize);
+}
+
 
 const successPopup = () => {
   new Popup(popup, popupContainer, SUCCESS_POPUP, closePopupButton, closeField, loginPopup).open();
@@ -53,6 +71,7 @@ const successPopup = () => {
 const signupPopup = () => {
   const popupSignup = new Popup(popup, popupContainer, signupPopupTemplate, closePopupButton, closeField, loginPopup);
   popupSignup.open();
+  if(window.innerWidth < MAX_MOBILE_WIDTH) burgerMenu.closeBurgerMenu();
   const signupForm = new Form(document.forms['signup'], 'popup__button_active');
   signupForm.setListeners(() => {
     mainApi.signup(...signupForm.getInfo())
@@ -71,6 +90,7 @@ const signupPopup = () => {
 const loginPopup = () => {
   const popupLogin = new Popup(popup, popupContainer, loginPopupTemplate, closePopupButton, closeField, signupPopup);
   popupLogin.open();
+  if(window.innerWidth < MAX_MOBILE_WIDTH) burgerMenu.closeBurgerMenu();
   const loginForm = new Form(document.forms['login'], 'popup__button_active');
   loginForm.setListeners(() => {
     mainApi.signin(...loginForm.getInfo())
