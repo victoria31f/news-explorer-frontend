@@ -7,9 +7,9 @@ Author: Victoria Fedotkina
 
 [Saved articles](https://victoria31f.github.io/news-explorer-frontend/articles)
 
-This is a study project. It represents news search by keywords with option to
+This is a study project. It represents news search by keywords with an option to
 save the news you liked in your Profile. A user can sign up and then log in to
-see his saved articles, user can delete them from the list as well.
+see his saved articles, user can delete saved articles from the list as well.
 
  ### Technologies used
  - HTML5
@@ -23,8 +23,7 @@ see his saved articles, user can delete them from the list as well.
  NPM needed. 
  - run 'npm install' to install packages
  - 'npm run dev' for dev mode and hot reload
- - 'nom run start' for production mode
- 
- ### Plans
- Implement JS to bind API and Frontend.
+ - 'npm run start' for production mode
+ - 'npm run deploy' deploys website on GitHub pages
+
  
