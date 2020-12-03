@@ -10,6 +10,11 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
+  devServer: {
+    host: '0.0.0.0',//your ip address
+    port: 8080,
+    disableHostCheck: true,
+  },
   entry: {
     main: path.resolve(__dirname, 'src/js/index.js'),
     articles: path.resolve(__dirname, 'src/js/articles.js')
