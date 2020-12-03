@@ -22,6 +22,7 @@
 }
 
 .cover_keyboard-active {
-  position: fixed;
+  position: relative;
   width: 100%;
+  min-height: 500px;
 }

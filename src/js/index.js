@@ -45,21 +45,19 @@ const newsApi = new NewsApi({
 })
 
 const burgerMenu = new BurgerMenu(HEADER_BG_COLOR_BLACK);
+
 // needed for Android keyboard pushing the content up
 if(window.innerWidth < MAX_MOBILE_WIDTH) {
   const windowHeight = window.innerHeight;
   const handleResize = () => {
     const newWindowHeight = window.innerHeight;
-    const keyboardSize = windowHeight - newWindowHeight;
     if (newWindowHeight < windowHeight) {
-      // BODY_ELEMENT.style.height = `${windowHeight}`;
-      // BODY_ELEMENT.scrollTop = keyboardSize;
-      document.querySelector('.cover').style.marginTop = `${-keyboardSize}`;
+      document.querySelector('.search__search-bar').style.marginTop = `75px`;
       document.querySelector('.cover').classList.add('cover_keyboard-active');
     }
     if (newWindowHeight >= windowHeight) {
-      document.querySelector('.cover').style.marginTop = `0`;
       document.querySelector('.cover').classList.remove('cover_keyboard-active');
+      document.querySelector('.search__search-bar').style.marginTop = `122px`;
     }
   }
   window.addEventListener('resize', handleResize);

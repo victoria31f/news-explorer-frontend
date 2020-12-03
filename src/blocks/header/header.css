@@ -26,5 +26,6 @@
     width: 100%;
     background-size: cover;
     background-image: url("../../images/header/cover_bg_mobile.jpg");
+    background-position-x: 10px;
   }
 }
