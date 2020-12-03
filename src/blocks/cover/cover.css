@@ -20,3 +20,8 @@
     box-sizing: border-box;
   }
 }
+
+.cover_keyboard-active {
+  position: fixed;
+  width: 100%;
+}
